@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MatterLab – Student Dashboard</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+</head>
+<body class="page-body">
+
+  <nav class="global-navbar">
+    <a href="index.html" class="nav-brand">⚗️ MatterLab</a>
+    <ul class="nav-links">
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="simulator.html">🧪 Simulator</a></li>
+      <li><a href="learn.html">📚 Learn</a></li>
+      <li><a href="experiments.html">🔬 Experiments</a></li>
+      <li><a href="quiz.html">📊 Quiz</a></li>
+      <li><a href="dashboard.html" class="active">🏆 Progress</a></li>
+      <li><a href="about.html">ℹ️ About</a></li>
+    </ul>
+    <div class="nav-right">
+      <button id="btn-theme" style="background:none;border:none;cursor:pointer;font-size:1.2rem;color:var(--text-primary)">☀️</button>
+      <button id="hamburger" class="hamburger">☰</button>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="index.html">🏠 Home</a>
+    <a href="simulator.html">🧪 Simulator</a>
+    <a href="learn.html">📚 Learn</a>
+    <a href="experiments.html">🔬 Experiments</a>
+    <a href="quiz.html">📊 Quiz</a>
+    <a href="dashboard.html" class="active">🏆 Progress</a>
+    <a href="about.html">ℹ️ About</a>
+  </div>
+
+  <main class="page-section fade-up">
+    <h1 class="section-title">🏆 Student Progress Dashboard</h1>
+    <p class="section-sub">Your learning journey at a glance. All data is saved locally in this browser.</p>
+
+    <!-- STATS CARDS -->
+    <div class="dash-stats-grid" id="stats-grid">
+      <div class="dash-stat-card" style="--ds-color:linear-gradient(90deg,#38bdf8,#22d3ee)">
+        <span class="ds-icon">🧪</span>
+        <div class="ds-value" id="ds-sim">0</div>
+        <div class="ds-label">Simulator Sessions</div>
+      </div>
+      <div class="dash-stat-card" style="--ds-color:linear-gradient(90deg,#a78bfa,#f472b6)">
+        <span class="ds-icon">📊</span>
+        <div class="ds-value" id="ds-quiz">0</div>
+        <div class="ds-label">Quizzes Taken</div>
+      </div>
+      <div class="dash-stat-card" style="--ds-color:linear-gradient(90deg,#34d399,#10b981)">
+        <span class="ds-icon">🔬</span>
+        <div class="ds-value" id="ds-exp">0</div>
+        <div class="ds-label">Experiments Viewed</div>
+      </div>
+      <div class="dash-stat-card" style="--ds-color:linear-gradient(90deg,#fbbf24,#f97316)">
+        <span class="ds-icon">⭐</span>
+        <div class="ds-value" id="ds-best">–</div>
+        <div class="ds-label">Best Quiz Score</div>
+      </div>
+    </div>
+
+    <div class="dash-row">
+      <!-- Topic Progress -->
+      <div class="dash-card">
+        <div class="dash-card-title">📚 Topic Coverage</div>
+        <div class="progress-topic-list">
+          <div class="progress-topic-item">
+            <span class="pt-emoji">🧊</span>
+            <span class="pt-label">States of Matter</span>
+            <div class="pt-bar"><div class="pt-fill" id="pt-states" style="width:0%"></div></div>
+            <span class="pt-pct" id="pct-states">–</span>
+          </div>
+          <div class="progress-topic-item">
+            <span class="pt-emoji">💨</span>
+            <span class="pt-label">Diffusion</span>
+            <div class="pt-bar"><div class="pt-fill" id="pt-diff" style="width:0%"></div></div>
+            <span class="pt-pct" id="pct-diff">–</span>
+          </div>
+          <div class="progress-topic-item">
+            <span class="pt-emoji">🔬</span>
+            <span class="pt-label">Solutions &amp; Colloids</span>
+            <div class="pt-bar"><div class="pt-fill" id="pt-sol" style="width:0%"></div></div>
+            <span class="pt-pct" id="pct-sol">–</span>
+          </div>
+          <div class="progress-topic-item">
+            <span class="pt-emoji">⚛️</span>
+            <span class="pt-label">Atoms &amp; Molecules</span>
+            <div class="pt-bar"><div class="pt-fill" id="pt-atoms" style="width:0%"></div></div>
+            <span class="pt-pct" id="pct-atoms">–</span>
+          </div>
+          <div class="progress-topic-item">
+            <span class="pt-emoji">⚗️</span>
+            <span class="pt-label">Chemical Reactions</span>
+            <div class="pt-bar"><div class="pt-fill" id="pt-react" style="width:0%"></div></div>
+            <span class="pt-pct" id="pct-react">–</span>
+          </div>
+        </div>
+        <p style="font-size:0.75rem;color:var(--text-muted);margin-top:1rem;">Take quizzes to fill your progress bars!</p>
+      </div>
+
+      <!-- Recent Activity -->
+      <div class="dash-card">
+        <div class="dash-card-title">🕐 Recent Activity</div>
+        <div class="activity-list" id="activity-list">
+          <div class="activity-item">
+            <span class="ai-icon">👋</span>
+            <span class="ai-text">Welcome to MatterLab! Start exploring to track your progress.</span>
+            <span class="ai-time">Now</span>
+          </div>
+          <div class="activity-item">
+            <span class="ai-icon">🧪</span>
+            <span class="ai-text"><a href="simulator.html" style="color:var(--accent-primary)">Open Simulator</a> to start learning</span>
+            <span class="ai-time">–</span>
+          </div>
+          <div class="activity-item">
+            <span class="ai-icon">📊</span>
+            <span class="ai-text"><a href="quiz.html" style="color:var(--accent-primary)">Take a Quiz</a> to test your knowledge</span>
+            <span class="ai-time">–</span>
+          </div>
+          <div class="activity-item">
+            <span class="ai-icon">🔬</span>
+            <span class="ai-text"><a href="experiments.html" style="color:var(--accent-primary)">Try Experiments</a> for hands-on learning</span>
+            <span class="ai-time">–</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACHIEVEMENTS -->
+    <div class="dash-card">
+      <div class="dash-card-title">🏅 Achievements &amp; Badges</div>
+      <div class="badge-grid" id="badge-grid">
+        <div class="badge-item" id="badge-first-sim">
+          <div class="badge-icon">🧪</div>
+          <div class="badge-name">First Lab</div>
+        </div>
+        <div class="badge-item" id="badge-quiz-1">
+          <div class="badge-icon">📊</div>
+          <div class="badge-name">Quiz Taker</div>
+        </div>
+        <div class="badge-item" id="badge-quiz-5">
+          <div class="badge-icon">🎯</div>
+          <div class="badge-name">Quiz Pro</div>
+        </div>
+        <div class="badge-item" id="badge-perfect">
+          <div class="badge-icon">💯</div>
+          <div class="badge-name">Perfect Score</div>
+        </div>
+        <div class="badge-item" id="badge-exp-1">
+          <div class="badge-icon">🔬</div>
+          <div class="badge-name">Lab Explorer</div>
+        </div>
+        <div class="badge-item" id="badge-all-topics">
+          <div class="badge-icon">🌟</div>
+          <div class="badge-name">All Topics</div>
+        </div>
+        <div class="badge-item" id="badge-streak">
+          <div class="badge-icon">🔥</div>
+          <div class="badge-name">Streak x3</div>
+        </div>
+        <div class="badge-item" id="badge-master">
+          <div class="badge-icon">🏆</div>
+          <div class="badge-name">Master</div>
+        </div>
+      </div>
+      <p style="font-size:0.75rem;color:var(--text-muted);margin-top:1rem;">Coloured badges = earned. Grey badges = locked. Keep exploring to unlock all!</p>
+    </div>
+
+    <!-- QUICK LINKS -->
+    <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;">
+      <a href="simulator.html" class="btn-primary">🧪 Open Simulator</a>
+      <a href="quiz.html" class="btn-secondary">📊 Take Quiz</a>
+      <a href="experiments.html" class="btn-secondary">🔬 Experiments</a>
+      <button class="btn-secondary" id="clear-progress-btn" style="color:var(--accent-hot)!important;border-color:var(--accent-hot)!important;">🗑️ Clear Progress</button>
+    </div>
+  </main>
+
+  <footer style="text-align:center;padding:1.5rem;border-top:1px solid var(--border-subtle);font-size:0.78rem;color:var(--text-muted);">
+    MatterLab v4.0 &nbsp;|&nbsp; <a href="about.html" style="color:var(--accent-primary);text-decoration:none;">About &amp; Disclaimer</a>
+  </footer>
+
+  <script src="js/shared-nav.js"></script>
+  <script>
+  'use strict';
+  document.addEventListener('DOMContentLoaded', function() {
+    if (!window.MLProgress) return;
+
+    function gp(k, d) { return MLProgress.get(k, d); }
+
+    // Stats
+    document.getElementById('ds-sim').textContent = gp('sim-sessions', 0);
+    document.getElementById('ds-quiz').textContent = gp('quiz-taken', 0);
+    document.getElementById('ds-exp').textContent = gp('exp-viewed', 0);
+
+    // Best quiz score across all topics
+    const topics = ['states', 'diffusion', 'solutions', 'atoms', 'reactions', 'mixed'];
+    let bestScore = 0;
+    topics.forEach(function(t) {
+      const s = gp('quiz-best-' + t, 0);
+      if (s > bestScore) bestScore = s;
+    });
+    document.getElementById('ds-best').textContent = bestScore > 0 ? bestScore + '%' : '–';
+
+    // Topic progress bars
+    const topicMap = {
+      states: { fill: 'pt-states', pct: 'pct-states' },
+      diffusion: { fill: 'pt-diff', pct: 'pct-diff' },
+      solutions: { fill: 'pt-sol', pct: 'pct-sol' },
+      atoms: { fill: 'pt-atoms', pct: 'pct-atoms' },
+      reactions: { fill: 'pt-react', pct: 'pct-react' },
+    };
+    topics.forEach(function(t) {
+      if (!topicMap[t]) return;
+      const score = gp('quiz-best-' + t, 0);
+      document.getElementById(topicMap[t].fill).style.width = score + '%';
+      document.getElementById(topicMap[t].pct).textContent = score > 0 ? score + '%' : '–';
+    });
+
+    // Badges
+    function earn(id) {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('earned');
+    }
+    if (gp('sim-sessions', 0) >= 1) earn('badge-first-sim');
+    if (gp('quiz-taken', 0) >= 1) earn('badge-quiz-1');
+    if (gp('quiz-taken', 0) >= 5) earn('badge-quiz-5');
+    if (bestScore >= 100) earn('badge-perfect');
+    if (gp('exp-viewed', 0) >= 1) earn('badge-exp-1');
+
+    // All topics attempted
+    const allAttempted = topics.filter(function(t) { return gp('quiz-best-' + t, 0) > 0; });
+    if (allAttempted.length >= 5) earn('badge-all-topics');
+    if (bestScore >= 80 && gp('quiz-taken', 0) >= 3) earn('badge-streak');
+    if (bestScore >= 90 && allAttempted.length >= 4) earn('badge-master');
+
+    // Clear progress
+    document.getElementById('clear-progress-btn').addEventListener('click', function() {
+      if (confirm('Clear all your MatterLab progress data? This cannot be undone.')) {
+        Object.keys(localStorage).filter(function(k) { return k.startsWith('ml-'); })
+          .forEach(function(k) { localStorage.removeItem(k); });
+        location.reload();
+      }
+    });
+
+    // Record visit
+    MLProgress.increment('dash-visits');
+  });
+  </script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="MatterLab Quiz – Topic-wise MCQ quizzes for Class 6-10 chemistry. States of Matter, Diffusion, Tyndall Effect, Atoms and more. Instant feedback and scoring."/>
+  <title>MatterLab – Quiz &amp; Assessment</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+</head>
+<body class="page-body">
+
+  <nav class="global-navbar">
+    <a href="index.html" class="nav-brand">⚗️ MatterLab</a>
+    <ul class="nav-links">
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="simulator.html">🧪 Simulator</a></li>
+      <li><a href="learn.html">📚 Learn</a></li>
+      <li><a href="experiments.html">🔬 Experiments</a></li>
+      <li><a href="quiz.html" class="active">📊 Quiz</a></li>
+      <li><a href="dashboard.html">🏆 Progress</a></li>
+      <li><a href="about.html">ℹ️ About</a></li>
+    </ul>
+    <div class="nav-right">
+      <button id="btn-theme" style="background:none;border:none;cursor:pointer;font-size:1.2rem;color:var(--text-primary)">☀️</button>
+      <button id="hamburger" class="hamburger">☰</button>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="index.html">🏠 Home</a>
+    <a href="simulator.html">🧪 Simulator</a>
+    <a href="learn.html">📚 Learn</a>
+    <a href="experiments.html">🔬 Experiments</a>
+    <a href="quiz.html" class="active">📊 Quiz</a>
+    <a href="dashboard.html">🏆 Progress</a>
+    <a href="about.html">ℹ️ About</a>
+  </div>
+
+  <main class="page-section fade-up">
+    <h1 class="section-title">📊 Quiz &amp; Assessment</h1>
+    <p class="section-sub">Test your chemistry knowledge! Choose a topic and start the quiz. Get instant feedback and explanations after each question.</p>
+
+    <!-- SETUP SCREEN -->
+    <div class="quiz-setup" id="quiz-setup">
+      <h2 style="font-family:var(--font-label);font-size:1.1rem;font-weight:800;margin-bottom:1rem;">📚 Choose a Topic</h2>
+      <div class="quiz-topic-grid">
+        <button class="quiz-topic-btn selected" data-topic="states">🧊 States of Matter</button>
+        <button class="quiz-topic-btn" data-topic="diffusion">💨 Diffusion</button>
+        <button class="quiz-topic-btn" data-topic="solutions">🔬 Solutions &amp; Colloids</button>
+        <button class="quiz-topic-btn" data-topic="atoms">⚛️ Atoms &amp; Molecules</button>
+        <button class="quiz-topic-btn" data-topic="reactions">⚗️ Chemical Reactions</button>
+        <button class="quiz-topic-btn" data-topic="mixed">🎲 Mixed (All Topics)</button>
+      </div>
+      <button class="btn-primary" id="start-quiz-btn" style="width:100%;justify-content:center;margin-top:0.5rem;border-radius:var(--radius-md);">Start Quiz 🚀</button>
+    </div>
+
+    <!-- QUIZ ARENA -->
+    <div class="quiz-arena" id="quiz-arena">
+      <div class="quiz-progress-row">
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-progress-fill" style="width:0%"></div></div>
+        <div class="quiz-score-live" id="quiz-score-live">Q 1/10</div>
+      </div>
+      <div class="quiz-question-card" id="quiz-question-card">
+        <div class="quiz-q-num" id="quiz-q-num">Question 1 of 10</div>
+        <div class="quiz-q-text" id="quiz-q-text">Loading question...</div>
+        <div class="quiz-options" id="quiz-options"></div>
+        <div class="quiz-explanation" id="quiz-explanation"></div>
+        <button class="quiz-next-btn" id="quiz-next-btn" onclick="nextQuestion()">Next Question →</button>
+      </div>
+    </div>
+
+    <!-- RESULT SCREEN -->
+    <div class="quiz-result" id="quiz-result">
+      <div class="result-ring">
+        <svg width="140" height="140" viewBox="0 0 140 140">
+          <circle cx="70" cy="70" r="58" fill="none" stroke="var(--bg-card2)" stroke-width="10"/>
+          <circle cx="70" cy="70" r="58" fill="none" stroke="url(#scoreGrad)" stroke-width="10"
+            stroke-dasharray="364.4" id="score-circle" stroke-dashoffset="364.4" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#38bdf8"/>
+              <stop offset="100%" stop-color="#a78bfa"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div class="result-ring-text">
+          <div class="result-percent" id="result-percent">0%</div>
+          <div class="result-label">Score</div>
+        </div>
+      </div>
+      <div class="result-msg" id="result-msg">Great work!</div>
+      <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1.5rem;" id="result-detail">You answered 0 out of 10 questions correctly.</p>
+      <div style="display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;">
+        <button class="btn-primary" onclick="restartQuiz()">🔄 Try Again</button>
+        <a href="learn.html" class="btn-secondary">📚 Review Theory</a>
+        <a href="dashboard.html" class="btn-secondary">🏆 View Progress</a>
+      </div>
+    </div>
+  </main>
+
+  <footer style="text-align:center;padding:1.5rem;border-top:1px solid var(--border-subtle);font-size:0.78rem;color:var(--text-muted);">
+    MatterLab v4.0 &nbsp;|&nbsp; <a href="about.html" style="color:var(--accent-primary);text-decoration:none;">About &amp; Disclaimer</a>
+  </footer>
+
+  <script src="js/shared-nav.js"></script>
+  <script>
+  'use strict';
+  // ── QUESTION BANK ──────────────────────────────────────────────
+  const QUESTION_BANK = {
+    states: [
+      { q: 'Which state of matter has a definite shape and definite volume?', opts: ['Gas', 'Liquid', 'Solid', 'Plasma'], ans: 2, exp: 'Solids have a definite shape because particles are tightly packed in fixed positions. They also have definite volume because particles cannot move freely.' },
+      { q: 'What is the temperature at which ice melts to water at standard pressure?', opts: ['100°C', '37°C', '0°C', '-10°C'], ans: 2, exp: 'The melting point of ice (water) at standard atmospheric pressure is 0°C. At this temperature, solid and liquid water exist in equilibrium.' },
+      { q: 'During boiling, the temperature of water remains at 100°C even though heat is supplied. This heat is called:', opts: ['Specific heat', 'Kinetic energy', 'Latent heat of vaporisation', 'Conduction heat'], ans: 2, exp: 'Latent heat of vaporisation is the heat energy absorbed by a liquid at its boiling point to convert to gas. During this phase change, temperature remains constant.' },
+      { q: 'Which of the following substances undergoes sublimation?', opts: ['Water', 'Iron', 'Camphor', 'Mercury'], ans: 2, exp: 'Camphor undergoes sublimation — it converts directly from solid to gas without passing through the liquid state. Other examples: Iodine, Naphthalene, Dry Ice (CO₂).' },
+      { q: 'In which state of matter is the intermolecular distance maximum?', opts: ['Solid', 'Liquid', 'Gas', 'Same in all states'], ans: 2, exp: 'Gas particles are very far apart from each other — intermolecular distances are much larger than in solids or liquids. This is why gases are highly compressible.' },
+      { q: 'What happens to the kinetic energy of particles when temperature increases?', opts: ['Decreases', 'Remains same', 'Increases', 'Becomes zero'], ans: 2, exp: 'Temperature is directly related to the average kinetic energy of particles. Higher temperature = higher kinetic energy = faster moving particles.' },
+      { q: 'The process of conversion of gas to liquid is called:', opts: ['Evaporation', 'Condensation', 'Sublimation', 'Melting'], ans: 1, exp: 'Condensation is the process where gas cools down and converts to liquid. Example: Water vapour in air condenses to form water droplets on a cold surface.' },
+      { q: 'Which state of matter takes the shape of the container but has a fixed volume?', opts: ['Solid', 'Gas', 'Liquid', 'Plasma'], ans: 2, exp: 'Liquid particles can slide past each other, so they take the shape of their container. But they cannot be easily compressed, so volume remains fixed.' },
+      { q: 'Latent heat of fusion for water is approximately:', opts: ['100 kJ/kg', '2260 kJ/kg', '334 kJ/kg', '4.18 kJ/kg'], ans: 2, exp: 'The latent heat of fusion of water (ice → water) is approximately 334 kJ/kg. This is why ice is effective as a coolant — it absorbs large amount of heat while melting.' },
+      { q: 'At which point is the interparticle force of attraction strongest?', opts: ['Gas state', 'Liquid state', 'Solid state', 'During phase change'], ans: 2, exp: 'In solids, particles are very close together and the interparticle attractive forces are strongest, keeping them in fixed positions (crystal lattice).' },
+    ],
+    diffusion: [
+      { q: 'Diffusion is the movement of particles from a region of:', opts: ['Low to high concentration', 'High to low concentration', 'Equal concentration', 'Hot to cold region'], ans: 1, exp: 'Diffusion occurs spontaneously from high concentration to low concentration due to the random motion of particles until the concentration becomes uniform throughout.' },
+      { q: 'Which state of matter shows the fastest rate of diffusion?', opts: ['Solid', 'Liquid', 'Gas', 'All diffuse equally fast'], ans: 2, exp: 'Gases diffuse fastest because their particles have high kinetic energy, move rapidly, and the intermolecular spaces are large allowing free movement.' },
+      { q: 'The smell of a perfume quickly spreads across a room. This is an example of:', opts: ['Evaporation only', 'Diffusion of gas', 'Osmosis', 'Convection'], ans: 1, exp: 'The perfume molecules (volatile liquid) evaporate and then diffuse through the air from the high concentration region (near bottle) to lower concentration regions (across the room).' },
+      { q: 'How does temperature affect the rate of diffusion?', opts: ['Higher temp = slower diffusion', 'Higher temp = faster diffusion', 'Temperature has no effect', 'Only works at 0°C'], ans: 1, exp: 'Higher temperature increases the kinetic energy of particles, causing them to move faster. This increases the rate of diffusion significantly.' },
+      { q: 'KMnO₄ crystals placed in water slowly spread their colour. This is:', opts: ['Diffusion in liquid', 'Diffusion in gas', 'Osmosis', 'Filtration'], ans: 0, exp: 'KMnO₄ (potassium permanganate) diffuses through water — this is diffusion in a liquid medium. The purple colour spreads from high to low concentration.' },
+      { q: 'Graham\'s Law of Diffusion states that the rate of diffusion is inversely proportional to:', opts: ['Temperature', 'Square root of molar mass', 'Pressure', 'Volume'], ans: 1, exp: 'Graham\'s Law: Rate ∝ 1/√M. Lighter gases diffuse faster. NH₃ (M=17) diffuses faster than HCl (M=36.5).' },
+      { q: 'The spreading of ink in water without stirring is due to:', opts: ['Evaporation', 'Diffusion', 'Capillary action', 'Osmosis'], ans: 1, exp: 'Ink particles move spontaneously from high concentration (drop area) to low concentration (rest of water) through diffusion.' },
+      { q: 'Why does diffusion occur more rapidly in gases than in liquids?', opts: ['Gas particles are heavier', 'Gas particles have larger intermolecular spaces', 'Gas particles are smaller', 'Liquids are denser'], ans: 1, exp: 'Gas particles have very large intermolecular distances, meaning there is more free space for particles to move through. This allows much faster diffusion compared to liquids.' },
+    ],
+    solutions: [
+      { q: 'Which type of mixture shows the Tyndall Effect?', opts: ['True solution', 'Colloid', 'Compound', 'Element'], ans: 1, exp: 'Colloids show the Tyndall Effect because their particles (1–100nm) are large enough to scatter light, making the beam visible. True solution particles are too small to scatter light.' },
+      { q: 'The particle size in a true solution is:', opts: ['Greater than 100 nm', '1 nm to 100 nm', 'Less than 1 nm', 'Greater than 1 mm'], ans: 2, exp: 'In a true solution, solute particles are less than 1 nm in size. They are invisible to the naked eye and cannot be filtered. Example: Salt in water.' },
+      { q: 'Milk is an example of a:', opts: ['True solution', 'Suspension', 'Colloid', 'Compound'], ans: 2, exp: 'Milk is a colloid where fat globules (0.1–10 μm) are dispersed in water. It shows Tyndall effect, appears white/opaque, and particles do not settle on standing.' },
+      { q: 'In a suspension, particles will:', opts: ['Never settle', 'Settle on standing', 'Show Brownian motion only', 'Completely dissolve'], ans: 1, exp: 'Suspension particles are greater than 100nm and will settle under gravity when left undisturbed. Example: Chalk in water settles after some time.' },
+      { q: 'Brownian motion in colloids is caused by:', opts: ['Gravity', 'Magnetic force', 'Unequal bombardment by surrounding molecules', 'Electric charge'], ans: 2, exp: 'Colloidal particles show random zigzag (Brownian) motion because they are continuously bombarded unequally by the much smaller surrounding fluid molecules.' },
+      { q: 'Which of the following is NOT a colloid?', opts: ['Fog', 'Smoke', 'Salt solution', 'Blood'], ans: 2, exp: 'Salt solution is a TRUE SOLUTION — salt ions are less than 1nm and dissolve completely. Fog (water in air), smoke (carbon in air), and blood are all colloids.' },
+      { q: 'The Tyndall Effect is the:', opts: ['Absorption of light by colloids', 'Scattering of light by colloidal particles', 'Reflection of light', 'Refraction of light'], ans: 1, exp: 'The Tyndall Effect is the scattering of a beam of light by the colloidal particles. The beam path becomes visible in the colloid but not in a true solution.' },
+      { q: 'Which technique is used to separate colloids from true solutions?', opts: ['Filtration', 'Dialysis', 'Distillation', 'Crystallisation'], ans: 1, exp: 'Dialysis is used to separate colloidal particles from ionic (true solution) particles using a semi-permeable membrane. Used in dialysis machines for kidney patients.' },
+    ],
+    atoms: [
+      { q: 'Who proposed the atomic theory stating atoms are indivisible particles?', opts: ['Rutherford', 'Bohr', 'John Dalton', 'Thomson'], ans: 2, exp: 'John Dalton proposed the atomic theory in 1808, stating that all matter is made of tiny indivisible particles called atoms. Each element has unique atoms.' },
+      { q: 'The chemical formula of water is:', opts: ['H₂O₂', 'HO', 'H₂O', 'H₃O'], ans: 2, exp: 'Water (H₂O) consists of 2 hydrogen atoms and 1 oxygen atom per molecule. Dalton established these fixed ratios as the Law of Constant Proportions.' },
+      { q: 'What is the SI unit of amount of substance?', opts: ['Gram', 'Kilogram', 'Litre', 'Mole'], ans: 3, exp: 'The mole is the SI unit for amount of substance. 1 mole = 6.022 × 10²³ particles (Avogadro\'s number). This applies to atoms, molecules, ions, etc.' },
+      { q: 'The atomic mass of Carbon is approximately:', opts: ['1 u', '12 u', '14 u', '16 u'], ans: 1, exp: 'The atomic mass of Carbon (C) is approximately 12 atomic mass units (u or amu). Carbon-12 is the standard for the atomic mass scale.' },
+      { q: 'Which law states that elements always combine in fixed mass ratios?', opts: ['Law of Conservation of Mass', 'Law of Constant Proportions', 'Graham\'s Law', 'Boyle\'s Law'], ans: 1, exp: 'Law of Constant Proportions (Proust\'s Law) states that a compound always contains elements combined in fixed mass ratios regardless of source. E.g., Water always = 2:1 H to O by number.' },
+      { q: 'The formula mass of NaCl (common salt) is:', opts: ['23 u', '35.5 u', '58.5 u', '46 u'], ans: 2, exp: 'NaCl = Na (23 u) + Cl (35.5 u) = 58.5 u. This is the formula mass because NaCl forms an ionic lattice, not discrete molecules.' },
+      { q: 'Ions are formed when atoms:', opts: ['Gain or lose electrons', 'Gain or lose protons', 'Gain or lose neutrons', 'Break apart'], ans: 0, exp: 'Ions form when atoms gain electrons (becoming negatively charged anions) or lose electrons (becoming positively charged cations). E.g., Na → Na⁺ + e⁻.' },
+    ],
+    reactions: [
+      { q: 'In a chemical reaction, the Law of Conservation of Mass states:', opts: ['Mass of reactants > Mass of products', 'Mass of reactants = Mass of products', 'Mass of products > Mass of reactants', 'Mass changes randomly'], ans: 1, exp: 'Antoine Lavoisier\'s Law: Total mass of reactants = Total mass of products. Atoms are rearranged but not created or destroyed in chemical reactions.' },
+      { q: 'Which type of reaction involves two or more substances combining to form a single product?', opts: ['Decomposition', 'Combination', 'Displacement', 'Redox'], ans: 1, exp: 'Combination reaction: A + B → AB. Example: 2Mg + O₂ → 2MgO (Magnesium burns in oxygen to form Magnesium oxide). Also called synthesis reaction.' },
+      { q: 'Rusting of iron is an example of which type of reaction?', opts: ['Decomposition', 'Displacement', 'Oxidation (Slow combustion)', 'Endothermic'], ans: 2, exp: 'Rusting is a slow oxidation process: 4Fe + 3O₂ + 6H₂O → 4Fe(OH)₃. Iron reacts with oxygen and water in the environment to form iron oxide (rust).' },
+      { q: 'A reaction that releases heat energy to the surroundings is called:', opts: ['Endothermic', 'Exothermic', 'Photochemical', 'Reversible'], ans: 1, exp: 'Exothermic reactions release heat energy. Examples: Combustion of fuels, neutralisation of acid-base, respiration. The products have less energy than reactants.' },
+      { q: 'What are the substances that take part in a chemical reaction called?', opts: ['Products', 'Catalysts', 'Reactants', 'Inhibitors'], ans: 2, exp: 'Reactants are the starting substances in a chemical reaction. They are written on the LEFT side of a chemical equation. After reaction, they form PRODUCTS (right side).' },
+      { q: 'In the equation: 2H₂ + O₂ → 2H₂O, what is the ratio of H₂ to O₂?', opts: ['1:1', '2:1', '1:2', '3:1'], ans: 1, exp: 'From the balanced equation, 2 moles of H₂ react with 1 mole of O₂. So the molar ratio H₂:O₂ = 2:1. Balancing ensures conservation of atoms on both sides.' },
+    ],
+  };
+
+  // Mixed = all questions combined
+  QUESTION_BANK.mixed = [];
+  Object.values(QUESTION_BANK).forEach(function(arr) {
+    if (Array.isArray(arr)) QUESTION_BANK.mixed = QUESTION_BANK.mixed.concat(arr);
+  });
+
+  // ── STATE ──────────────────────────────────────────────────────
+  let currentTopic = 'states';
+  let questions = [];
+  let currentQ = 0;
+  let score = 0;
+  let answered = false;
+
+  // ── TOPIC SELECTION ───────────────────────────────────────────
+  document.querySelectorAll('.quiz-topic-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.quiz-topic-btn').forEach(function(b) { b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      currentTopic = btn.dataset.topic;
+    });
+  });
+
+  document.getElementById('start-quiz-btn').addEventListener('click', startQuiz);
+
+  function shuffle(arr) {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function startQuiz() {
+    const pool = QUESTION_BANK[currentTopic] || QUESTION_BANK.states;
+    questions = shuffle(pool).slice(0, Math.min(10, pool.length));
+    currentQ = 0;
+    score = 0;
+    answered = false;
+    document.getElementById('quiz-setup').style.display = 'none';
+    document.getElementById('quiz-result').classList.remove('show');
+    document.getElementById('quiz-arena').classList.add('active');
+    showQuestion();
+  }
+
+  function showQuestion() {
+    if (currentQ >= questions.length) { showResult(); return; }
+    answered = false;
+    const q = questions[currentQ];
+    document.getElementById('quiz-q-num').textContent = 'Question ' + (currentQ + 1) + ' of ' + questions.length;
+    document.getElementById('quiz-q-text').textContent = q.q;
+    document.getElementById('quiz-score-live').textContent = 'Q ' + (currentQ + 1) + '/' + questions.length + ' · Score: ' + score;
+    document.getElementById('quiz-progress-fill').style.width = (currentQ / questions.length * 100) + '%';
+    document.getElementById('quiz-explanation').classList.remove('show');
+    document.getElementById('quiz-explanation').textContent = '';
+    document.getElementById('quiz-next-btn').classList.remove('show');
+
+    const letters = ['A', 'B', 'C', 'D'];
+    const optContainer = document.getElementById('quiz-options');
+    optContainer.innerHTML = '';
+    q.opts.forEach(function(opt, i) {
+      const btn = document.createElement('button');
+      btn.className = 'quiz-option';
+      btn.innerHTML = '<span class="option-letter">' + letters[i] + '</span>' + opt;
+      btn.addEventListener('click', function() { selectAnswer(i, btn); });
+      optContainer.appendChild(btn);
+    });
+  }
+
+  function selectAnswer(idx, btn) {
+    if (answered) return;
+    answered = true;
+    const q = questions[currentQ];
+    const opts = document.querySelectorAll('.quiz-option');
+    opts.forEach(function(o) { o.disabled = true; });
+    if (idx === q.ans) {
+      btn.classList.add('correct');
+      score++;
+    } else {
+      btn.classList.add('wrong');
+      opts[q.ans].classList.add('correct');
+    }
+    const expEl = document.getElementById('quiz-explanation');
+    expEl.textContent = '💡 ' + q.exp;
+    expEl.classList.add('show');
+    document.getElementById('quiz-next-btn').classList.add('show');
+  }
+
+  function nextQuestion() {
+    currentQ++;
+    showQuestion();
+  }
+
+  function showResult() {
+    document.getElementById('quiz-arena').classList.remove('active');
+    const result = document.getElementById('quiz-result');
+    result.classList.add('show');
+    const pct = Math.round(score / questions.length * 100);
+    document.getElementById('result-percent').textContent = pct + '%';
+    const circumference = 364.4;
+    document.getElementById('score-circle').style.strokeDashoffset = circumference - (pct / 100) * circumference;
+    let msg = '';
+    if (pct >= 90) msg = '🏆 Excellent! Master Chemist!';
+    else if (pct >= 70) msg = '🎉 Great Job! Keep it up!';
+    else if (pct >= 50) msg = '📚 Good effort! Review and retry.';
+    else msg = '💪 Keep practicing! You can do it!';
+    document.getElementById('result-msg').textContent = msg;
+    document.getElementById('result-detail').textContent = 'You answered ' + score + ' out of ' + questions.length + ' questions correctly (' + pct + '%).';
+
+    // Save to progress
+    if (window.MLProgress) {
+      MLProgress.increment('quiz-taken');
+      const best = MLProgress.get('quiz-best-' + currentTopic, 0);
+      if (pct > best) MLProgress.set('quiz-best-' + currentTopic, pct);
+    }
+  }
+
+  function restartQuiz() {
+    document.getElementById('quiz-result').classList.remove('show');
+    document.getElementById('quiz-setup').style.display = '';
+  }
+  </script>
+</body>
+</html>

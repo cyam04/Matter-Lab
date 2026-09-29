@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MatterLab: K-10 Interactive Chemistry Simulator – Visualize particle physics, phase changes, diffusion, and colloid chemistry. Designed for Class 6-10 students with Hinglish support." />
+  <meta name="keywords" content="chemistry, simulator, particles, phase change, diffusion, Tyndall effect, class 6 10, interactive, science lab" />
+  <meta name="theme-color" content="#0b0f1a" />
+  <title>MatterLab – K-10 Interactive Chemistry Simulator</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+  <!-- Preload fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- ═══════════════════════════════════════════
+       GLOBAL NAVBAR
+  ═══════════════════════════════════════════ -->
+  <nav class="global-navbar">
+    <a href="index.html" class="nav-brand">
+      <span class="nav-logo" aria-hidden="true">⚗️</span> MatterLab
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="simulator.html" class="active">🧪 Simulator</a></li>
+      <li><a href="learn.html">📚 Learn</a></li>
+      <li><a href="experiments.html">🔬 Experiments</a></li>
+      <li><a href="quiz.html">📊 Quiz</a></li>
+      <li><a href="dashboard.html">🏆 Progress</a></li>
+      <li><a href="about.html">ℹ️ About</a></li>
+    </ul>
+    <div class="nav-right">
+      <!-- Language Toggle -->
+      <button id="lang-toggle" class="hdr-btn" aria-label="Toggle Language" title="Toggle Language (L)" style="background:transparent;border:none;color:var(--text-primary);cursor:pointer;display:flex;align-items:center;gap:0.3rem;">
+        🌐
+        <span class="lang-option active-lang" data-lang="hinglish" style="font-size:0.8rem;font-weight:700">HI</span>
+        <span style="color:var(--text-muted);font-size:0.8rem">|</span>
+        <span class="lang-option" data-lang="english" style="font-size:0.8rem;font-weight:700;color:var(--text-muted)">EN</span>
+      </button>
+
+      <button id="btn-fullscreen" class="hdr-btn" aria-label="Toggle Fullscreen (F)" title="Fullscreen" style="background:transparent;border:none;color:var(--text-primary);cursor:pointer;font-size:1.1rem;">
+        ⛶
+      </button>
+
+      <!-- Theme toggle -->
+      <button id="btn-theme" class="hdr-btn" aria-label="Toggle Theme" style="background:transparent;border:none;color:var(--text-primary);cursor:pointer;font-size:1.1rem;">
+        ☀️
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="index.html">🏠 Home</a>
+    <a href="simulator.html" class="active">🧪 Simulator</a>
+    <a href="learn.html">📚 Learn</a>
+    <a href="experiments.html">🔬 Experiments</a>
+    <a href="quiz.html">📊 Quiz</a>
+    <a href="dashboard.html">🏆 Progress</a>
+    <a href="about.html">ℹ️ About</a>
+  </div>
+
+  <!-- Tab loader bar -->
+  <div class="tab-loader" id="tab-loader" aria-hidden="true"></div>
+
+  <!-- ═══════════════════════════════════════════
+       MAIN APP
+  ═══════════════════════════════════════════ -->
+  <main id="app-main" role="main">
+
+    <!-- ── Module Navigation Tabs ── -->
+    <div class="module-tabs" role="tablist" aria-label="Chemistry Modules">
+      <button class="mod-tab active" data-tab="1" role="tab" aria-selected="true" aria-controls="tab-panel-1" id="tab-btn-1">
+        🧊 <span class="tab-text">States &amp; Latent Heat</span>
+      </button>
+      <button class="mod-tab" data-tab="2" role="tab" aria-selected="false" aria-controls="tab-panel-2" id="tab-btn-2">
+        💨 <span class="tab-text">Diffusion Race</span>
+      </button>
+      <button class="mod-tab" data-tab="3" role="tab" aria-selected="false" aria-controls="tab-panel-3" id="tab-btn-3">
+        🔬 <span class="tab-text">Solution vs Colloid</span>
+      </button>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         SPLIT SCREEN LAB LAYOUT
+    ══════════════════════════════════════════ -->
+    <div class="lab-layout">
+
+      <!-- ═══════════════════
+           LEFT: CANVAS CHAMBER (65%)
+      ═══════════════════ -->
+      <section class="chamber-wrap" aria-label="Particle Chamber">
+        <!-- Canvas Container -->
+        <div class="canvas-container">
+          <canvas id="particle-canvas" role="img" aria-label="Interactive particle physics simulation"></canvas>
+
+          <!-- Overlay Labels -->
+          <div class="chamber-label" id="chamber-label">⚗️ Particle Chamber – Phase Transitions</div>
+          <div class="state-overlay-badge liquid" id="canvas-state-badge">Liquid</div>
+          <!-- Substance name shown on canvas for classroom visibility -->
+          <div class="canvas-sub-name" id="canvas-sub-name">💧 Paani (H₂O)</div>
+        </div>
+
+        <!-- Burner / Heat Control Bar -->
+        <div class="heat-controls-bar" role="group" aria-label="Temperature Control">
+          <span class="burner-icon" id="burner-icon" aria-hidden="true">🌡️</span>
+          <div class="temp-display mid" id="temp-display">25°C</div>
+
+          <!-- Diffusion burner icon (hidden when not on tab 2) -->
+          <span class="burner-icon" id="diff-burner-icon" aria-hidden="true" style="display:none">🌡️</span>
+
+          <!-- Temp slider (Tab 1) -->
+          <input
+            type="range"
+            id="temp-slider"
+            class="temp-slider"
+            min="-50"
+            max="200"
+            value="25"
+            step="1"
+            aria-label="Temperature slider"
+            style="flex:1"
+          />
+          <span id="temp-val" style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-muted);min-width:38px">25°C</span>
+
+          <!-- Diff temp slider (Tab 2, hidden) -->
+          <input
+            type="range"
+            id="diff-temp-slider"
+            min="0"
+            max="100"
+            value="25"
+            step="1"
+            aria-label="Diffusion temperature slider"
+            style="flex:1;display:none"
+          />
+          <span id="diff-temp-val" style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-muted);min-width:38px;display:none">25°C</span>
+
+          <!-- Reset button -->
+          <button id="btn-reset-chamber" class="sm-btn" aria-label="Reset Chamber" title="Reset Chamber">↺</button>
+        </div>
+      </section>
+
+      <!-- ═══════════════════
+           RIGHT: CONTROL PANEL (35%)
+      ═══════════════════ -->
+      <aside class="right-panel" aria-label="Control Panel">
+
+        <!-- ══════════════════════════
+             TAB 1 PANEL: States & Latent Heat
+        ══════════════════════════ -->
+        <div class="tab-panel active" data-tab-panel="1">
+
+          <!-- Substance Picker – Generated Dynamically by main.js -->
+          <div class="panel-card fade-in" style="padding-bottom:0.75rem">
+            <div class="panel-card-title" id="substance-title">🧪 Padarth Chuniye (Substance)</div>
+            <!-- Filter tabs + 50-substance scrollable grid built by main.js -->
+            <div id="substance-picker"></div>
+          </div>
+
+          <!-- Controls -->
+          <div class="panel-card fade-in">
+            <div class="panel-card-title" id="controls-title">⚙️ Controls</div>
+
+            <!-- Pressure Slider -->
+            <div class="slider-group">
+              <div class="slider-label">
+                <span id="press-slider-label">Piston Pressure (Dabaav)</span>
+                <span class="slider-val" id="pressure-val">0%</span>
+              </div>
+              <input
+                type="range"
+                id="pressure-slider"
+                class="piston-slider"
+                min="0"
+                max="50"
+                value="0"
+                step="1"
+                aria-label="Pressure slider"
+              />
+              <!-- Piston visual -->
+              <div class="piston-visual" aria-hidden="true">
+                <div class="piston-bar" id="piston-bar" style="width:0%">
+                  <div class="piston-tip"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Phase diagram track -->
+            <div class="slider-label" style="margin-top:0.5rem">
+              <span style="font-size:0.72rem;color:var(--text-muted)">Phase Track</span>
+            </div>
+            <div class="phase-track" aria-label="Phase state indicator">
+              <div class="phase-seg seg-solid active-phase" id="phase-solid">
+                <span id="phase-solid-lbl">SOLID</span>
+              </div>
+              <div class="phase-seg seg-liquid" id="phase-liquid">
+                <span id="phase-liquid-lbl">LIQUID</span>
+              </div>
+              <div class="phase-seg seg-gas" id="phase-gas">
+                <span id="phase-gas-lbl">GAS</span>
+              </div>
+            </div>
+
+            <!-- Latent heat alert -->
+            <div class="latent-alert" id="latent-alert" role="alert" aria-live="polite">
+              <span>⚡</span>
+              <span>Latent Heat Zone – Temperature Plateau!</span>
+            </div>
+          </div>
+
+          <!-- Live Meters -->
+          <div class="panel-card fade-in">
+            <div class="panel-card-title" id="meters-title">📊 Live Readings</div>
+            <div class="meters-grid">
+              <!-- State -->
+              <div class="meter-chip">
+                <div class="meter-label" id="meter-state-label">Current State</div>
+                <div class="meter-value" id="meter-state-val">Liquid</div>
+              </div>
+              <!-- Speed -->
+              <div class="meter-chip">
+                <div class="meter-label" id="meter-speed-label">Particle Speed</div>
+                <div class="meter-value mid" id="meter-speed-val">Medium</div>
+              </div>
+              <!-- Space -->
+              <div class="meter-chip">
+                <div class="meter-label" id="meter-space-label">Inter-Particle Space</div>
+                <div class="meter-value" id="meter-space-val">Moderate</div>
+              </div>
+              <!-- Attraction -->
+              <div class="meter-chip">
+                <div class="meter-label" id="meter-attract-label">Attraction Force</div>
+                <div class="meter-value" id="meter-attract-val">Moderate</div>
+              </div>
+            </div>
+
+            <!-- Kinetic Energy bar -->
+            <div style="margin-top:0.6rem">
+              <div class="slider-label">
+                <span class="meter-label" id="meter-kinetic-label" style="font-size:0.7rem">Kinetic Energy</span>
+                <span class="meter-value mid" id="meter-kinetic-val" style="font-size:0.78rem">50%</span>
+              </div>
+              <div class="meter-bar-wrap">
+                <div class="meter-bar" id="meter-kinetic-bar" style="width:50%;background:linear-gradient(90deg,#38bdf8,#22d3ee)"></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /Tab 1 Panel -->
+
+        <!-- ══════════════════════════
+             TAB 2 PANEL: Diffusion
+        ══════════════════════════ -->
+        <div class="tab-panel" data-tab-panel="2">
+
+          <!-- Controls -->
+          <div class="panel-card fade-in">
+            <div class="panel-card-title" id="diff-ctrl-title">💨 Diffusion Controls</div>
+
+            <!-- Barrier status -->
+            <div class="barrier-status on" id="barrier-status">🚧 BARRIER: ON</div>
+
+            <!-- Remove Barrier btn -->
+            <button id="btn-remove-barrier" class="action-btn danger" style="margin-top:0.65rem" aria-label="Toggle Barrier">
+              🚧 Remove Barrier
+            </button>
+
+            <!-- Diffusion % meter -->
+            <div style="margin-top:0.85rem">
+              <div class="slider-label">
+                <span class="meter-label" id="meter-diff-label" style="font-size:0.75rem;font-weight:700;color:var(--text-secondary)">Diffusion %</span>
+                <span class="meter-value green" id="meter-diff-val" style="font-size:0.82rem">0%</span>
+              </div>
+              <div class="meter-bar-wrap" style="height:5px">
+                <div class="meter-bar" id="meter-diff-bar" style="width:0%;background:linear-gradient(90deg,#4ade80,#22d3ee)"></div>
+              </div>
+            </div>
+
+            <!-- Legend -->
+            <div class="diffusion-legend" style="margin-top:0.85rem">
+              <div>
+                <span class="legend-dot" style="background:#38bdf8"></span>
+                Gas
+              </div>
+              <div>
+                <span class="legend-dot" style="background:#f472b6"></span>
+                Perfume / Smoke
+              </div>
+            </div>
+
+            <!-- Temp slider label (shown in heat bar) -->
+            <div style="margin-top:0.6rem">
+              <div class="slider-label">
+                <span id="diff-temp-label" style="font-size:0.8rem;font-weight:600;color:var(--text-secondary)">Temperature – Diffusion Speed</span>
+              </div>
+              <p style="font-size:0.72rem;color:var(--text-muted);margin-top:0.25rem">↑ Use the temperature slider below the chamber</p>
+            </div>
+          </div>
+
+          <!-- Info card -->
+          <div class="panel-card fade-in" style="background:linear-gradient(135deg,rgba(167,139,250,0.07),rgba(244,114,182,0.07));border-color:rgba(167,139,250,0.3)">
+            <div class="panel-card-title">💡 How It Works</div>
+            <p style="font-size:0.8rem;color:var(--text-secondary);line-height:1.65;font-family:var(--font-label);font-weight:600">
+              Particles always move from <em style="color:var(--accent-primary)">high concentration → low concentration</em>. Remove the barrier and watch the gases mix naturally. Higher temperature = faster diffusion (Graham's Law)!
+            </p>
+          </div>
+
+          <!-- Live meters for diffusion -->
+          <div class="panel-card fade-in">
+            <div class="panel-card-title" id="meters-title-2">📊 Live Readings</div>
+            <div class="meters-grid">
+              <div class="meter-chip">
+                <div class="meter-label">Gas Speed</div>
+                <div class="meter-value" id="diff-speed-val">Medium</div>
+              </div>
+              <div class="meter-chip">
+                <div class="meter-label">Barrier</div>
+                <div class="meter-value" id="diff-barrier-val" style="color:var(--accent-hot)">Active</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /Tab 2 Panel -->
+
+        <!-- ══════════════════════════
+             TAB 3 PANEL: Solution / Colloid
+        ══════════════════════════ -->
+        <div class="tab-panel" data-tab-panel="3">
+
+          <!-- Solution type selector -->
+          <div class="panel-card fade-in">
+            <div class="panel-card-title" id="solution-title">🫧 Solution Type</div>
+            <div class="solute-grid">
+              <!-- Salt -->
+              <button class="solute-btn active-sol" data-sol="salt" aria-label="Salt True Solution">
+                <span class="sol-icon">🧂</span>
+                <span class="sol-name">Namak (Salt)</span>
+              </button>
+              <!-- Sand -->
+              <button class="solute-btn" data-sol="sand" aria-label="Sand Suspension">
+                <span class="sol-icon">🏖️</span>
+                <span class="sol-name">Baalu (Sand)</span>
+              </button>
+              <!-- Colloid -->
+              <button class="solute-btn" data-sol="colloid" aria-label="Milk Fog Colloid">
+                <span class="sol-icon">🥛</span>
+                <span class="sol-name">Doodh / Fog</span>
+              </button>
+            </div>
+
+            <!-- Add solute -->
+            <button id="btn-add-solute" class="action-btn success" style="margin-top:0.65rem" aria-label="Add more solute">
+              ➕ Add Solute
+            </button>
+          </div>
+
+          <!-- Tyndall Test -->
+          <div class="panel-card fade-in">
+            <div class="panel-card-title" id="torch-title">🔦 Tyndall Test (Laser)</div>
+
+            <!-- Toggle -->
+            <div class="toggle-row">
+              <span class="toggle-label">Toggle Laser / Torch Beam</span>
+              <label class="toggle-switch" aria-label="Toggle laser beam">
+                <input type="checkbox" id="laser-toggle" />
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <!-- Tyndall status -->
+            <div class="tyndall-status">
+              <div class="beam-indicator" id="beam-indicator"></div>
+              <span id="tyndall-status-text">⬛ Laser Off</span>
+            </div>
+
+            <!-- Explanation -->
+            <div style="margin-top:0.6rem;padding:0.5rem 0.65rem;background:var(--bg-card2);border-radius:var(--radius-md);border:1px solid var(--border-subtle)">
+              <p style="font-size:0.74rem;color:var(--text-muted);line-height:1.6;font-family:var(--font-label);font-weight:600">
+                🔬 <strong style="color:var(--accent-green)">Colloids:</strong> Beam scatters → visible path<br/>
+                ✅ <strong style="color:var(--accent-primary)">True Solutions:</strong> Beam passes through invisible
+              </p>
+            </div>
+          </div>
+
+          <!-- Type reference card -->
+          <div class="panel-card fade-in" style="background:linear-gradient(135deg,rgba(74,222,128,0.07),rgba(56,189,248,0.07));border-color:rgba(74,222,128,0.3)">
+            <div class="panel-card-title">📋 Quick Reference</div>
+            <div style="display:flex;flex-direction:column;gap:0.45rem;font-size:0.75rem;font-family:var(--font-label);font-weight:700">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:0.3rem 0.5rem;background:rgba(56,189,248,0.1);border-radius:8px;border:1px solid rgba(56,189,248,0.25)">
+                <span>🧂 True Solution</span>
+                <span style="color:var(--accent-primary);font-size:0.68rem">No Tyndall</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:0.3rem 0.5rem;background:rgba(251,191,36,0.1);border-radius:8px;border:1px solid rgba(251,191,36,0.25)">
+                <span>🏖️ Suspension</span>
+                <span style="color:var(--accent-amber);font-size:0.68rem">Settles down</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:0.3rem 0.5rem;background:rgba(167,139,250,0.1);border-radius:8px;border:1px solid rgba(167,139,250,0.25)">
+                <span>🥛 Colloid</span>
+                <span style="color:var(--accent-secondary);font-size:0.68rem">Tyndall Effect ✨</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /Tab 3 Panel -->
+
+      </aside>
+      <!-- /Right Panel -->
+
+    </div>
+    <!-- /Lab Layout -->
+
+    <!-- ══════════════════════════════════════════
+         AHA! BOX (Full width, below split screen)
+    ══════════════════════════════════════════ -->
+    <div id="aha-box" role="region" aria-label="Educational explanation" aria-live="polite">
+      <div class="aha-header">
+        <span class="aha-emoji" aria-hidden="true">💡</span>
+        <div>
+          <div class="aha-title" id="aha-title">Bacho ka Doubt</div>
+          <div class="aha-subtitle" id="aha-subtitle">(Aha! Concept Box)</div>
+        </div>
+      </div>
+      <p id="aha-text">
+        💡 Temperature slider hilao aur dekho particles kaise phase change karte hain! <em>Melt aur Boil points</em> par special Latent Heat effect aata hai.
+      </p>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-strip" role="contentinfo">
+      MatterLab &copy; 2024 &nbsp;|&nbsp; Built for Classroom Learning &nbsp;|&nbsp;
+      Press <kbd style="background:var(--bg-card);padding:1px 5px;border-radius:4px;border:1px solid var(--border-subtle);font-size:0.7rem">F</kbd> for Fullscreen &nbsp;|&nbsp;
+      <kbd style="background:var(--bg-card);padding:1px 5px;border-radius:4px;border:1px solid var(--border-subtle);font-size:0.7rem">1</kbd>
+      <kbd style="background:var(--bg-card);padding:1px 5px;border-radius:4px;border:1px solid var(--border-subtle);font-size:0.7rem">2</kbd>
+      <kbd style="background:var(--bg-card);padding:1px 5px;border-radius:4px;border:1px solid var(--border-subtle);font-size:0.7rem">3</kbd> to switch tabs
+    </footer>
+
+  </main>
+
+  <!-- Toast notification -->
+  <div class="toast" role="status" aria-live="polite"></div>
+
+  <!-- ── Scripts ── -->
+  <script src="js/matter-lab.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Inline: fix temp slider show/hide on tab switch & diff temp controls -->
+  <script>
+    // Sync the heat bar controls with active tab
+    document.querySelectorAll('.mod-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tab = parseInt(btn.dataset.tab);
+        const tempSlider   = document.getElementById('temp-slider');
+        const tempVal      = document.getElementById('temp-val');
+        const diffSlider   = document.getElementById('diff-temp-slider');
+        const diffVal      = document.getElementById('diff-temp-val');
+        const diffBurner   = document.getElementById('diff-burner-icon');
+        const mainBurner   = document.getElementById('burner-icon');
+        const tempDisplay  = document.getElementById('temp-display');
+
+        if (tab === 1) {
+          tempSlider.style.display  = '';
+          tempVal.style.display     = '';
+          diffSlider.style.display  = 'none';
+          diffVal.style.display     = 'none';
+          diffBurner.style.display  = 'none';
+          mainBurner.style.display  = '';
+          tempDisplay.style.display = '';
+        } else if (tab === 2) {
+          tempSlider.style.display  = 'none';
+          tempVal.style.display     = 'none';
+          diffSlider.style.display  = '';
+          diffVal.style.display     = '';
+          diffBurner.style.display  = '';
+          mainBurner.style.display  = 'none';
+          tempDisplay.style.display = 'none';
+        } else {
+          tempSlider.style.display  = 'none';
+          tempVal.style.display     = 'none';
+          diffSlider.style.display  = 'none';
+          diffVal.style.display     = 'none';
+          diffBurner.style.display  = 'none';
+          mainBurner.style.display  = 'none';
+          tempDisplay.style.display = 'none';
+        }
+
+        // Update Tab 2 live meters
+        const diffBarrierVal = document.getElementById('diff-barrier-val');
+        if (diffBarrierVal) {
+          // Will update via onFrame
+        }
+      });
+    });
+
+    // Update diff-speed-val and diff-barrier-val from MatterLab frames
+    const origOnFrame = null;
+    window.addEventListener('load', () => {
+      const origFn = window.MatterLab ? window.MatterLab.onFrame : null;
+      if (window.MatterLab) {
+        const _orig = window.MatterLab.onFrame;
+        window.MatterLab.onFrame = (data) => {
+          if (_orig) _orig(data);
+          // Extra: update Tab 2 fields
+          const dspeed = document.getElementById('diff-speed-val');
+          const dbarr  = document.getElementById('diff-barrier-val');
+          if (dspeed) {
+            const spd = window.MatterLab.getState().diffTemp;
+            dspeed.textContent = spd > 65 ? 'Very Fast' : spd > 35 ? 'Fast' : spd > 15 ? 'Medium' : 'Slow';
+            dspeed.style.color = spd > 65 ? 'var(--accent-hot)' : spd > 35 ? 'var(--accent-amber)' : 'var(--accent-primary)';
+          }
+          if (dbarr) {
+            const barrierOn = window.MatterLab.getState().barrierActive;
+            dbarr.textContent = barrierOn ? 'Active' : 'Removed';
+            dbarr.style.color = barrierOn ? 'var(--accent-hot)' : 'var(--accent-green)';
+          }
+        };
+      }
+    });
+  </script>
+  <script src="js/shared-nav.js"></script>
+</body>
+</html>

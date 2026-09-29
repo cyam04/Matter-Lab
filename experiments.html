@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="MatterLab Experiments – 10 step-by-step virtual lab experiments for Class 6-10 covering phase changes, diffusion, Tyndall effect, sublimation and more."/>
+  <title>MatterLab – Guided Experiments</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+</head>
+<body class="page-body">
+
+  <nav class="global-navbar">
+    <a href="index.html" class="nav-brand">⚗️ MatterLab</a>
+    <ul class="nav-links">
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="simulator.html">🧪 Simulator</a></li>
+      <li><a href="learn.html">📚 Learn</a></li>
+      <li><a href="experiments.html" class="active">🔬 Experiments</a></li>
+      <li><a href="quiz.html">📊 Quiz</a></li>
+      <li><a href="dashboard.html">🏆 Progress</a></li>
+      <li><a href="about.html">ℹ️ About</a></li>
+    </ul>
+    <div class="nav-right">
+      <button id="btn-theme" style="background:none;border:none;cursor:pointer;font-size:1.2rem;color:var(--text-primary)">☀️</button>
+      <button id="hamburger" class="hamburger">☰</button>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="index.html">🏠 Home</a>
+    <a href="simulator.html">🧪 Simulator</a>
+    <a href="learn.html">📚 Learn</a>
+    <a href="experiments.html" class="active">🔬 Experiments</a>
+    <a href="quiz.html">📊 Quiz</a>
+    <a href="dashboard.html">🏆 Progress</a>
+    <a href="about.html">ℹ️ About</a>
+  </div>
+
+  <main class="page-section fade-up">
+    <h1 class="section-title">🔬 Guided Virtual Experiments</h1>
+    <p class="section-sub">10 step-by-step experiments for Class 6–10. Click any experiment to expand the full procedure. Launch the simulator to observe the particle-level action.</p>
+
+    <div class="exp-list" id="exp-list">
+
+      <!-- EXP 1 -->
+      <div class="exp-card" id="exp-1">
+        <div class="exp-header" onclick="toggleExp('exp-1')">
+          <span class="exp-num">01</span>
+          <span class="exp-emoji">🧊</span>
+          <div class="exp-title-wrap">
+            <div class="exp-title">Phase Change of Water (Ice → Water → Steam)</div>
+            <div class="exp-subtitle">Observing three states and latent heat</div>
+          </div>
+          <div class="exp-badges">
+            <span class="exp-badge cls">Class 6, 9</span>
+            <span class="exp-badge diff" style="background:rgba(56,189,248,0.2);color:#38bdf8;">Easy</span>
+          </div>
+          <span class="exp-chevron">▶</span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-aims">
+            <h4>Aim</h4>
+            <p>To observe the three states of water and understand phase changes by recording temperature vs time.</p>
+            <h4 style="margin-top:0.8rem;">Materials Required</h4>
+            <ul><li>Ice cubes | Beaker | Bunsen burner / hot plate | Thermometer | Stopwatch</li></ul>
+          </div>
+          <div class="exp-steps">
+            <h4 style="font-size:0.78rem;font-weight:700;font-family:var(--font-mono);color:var(--accent-primary);text-transform:uppercase;letter-spacing:0.5px;margin:1rem 0 0.5rem;">Procedure</h4>
+            <div class="exp-step"><div class="step-num">1</div><div class="step-text">Place ice cubes in the beaker and record the starting temperature (should be ≤ 0°C).</div></div>
+            <div class="exp-step"><div class="step-num">2</div><div class="step-text">Start heating slowly and record temperature every 30 seconds. <strong>Observe:</strong> Temperature stays at 0°C while ice melts — this is Latent Heat of Fusion.</div></div>
+            <div class="exp-step"><div class="step-num">3</div><div class="step-text">Continue heating after all ice melts. Temperature rises steadily through the liquid state.</div></div>
+            <div class="exp-step"><div class="step-num">4</div><div class="step-text">At 100°C observe: temperature stays constant while water boils — this is Latent Heat of Vaporisation.</div></div>
+            <div class="exp-step"><div class="step-num">5</div><div class="step-text">Note steam rising. Record final temperature and remove from heat. Allow to cool and observe condensation.</div></div>
+          </div>
+          <div class="exp-aims" style="margin-top:1rem;">
+            <h4>Observations</h4>
+            <table class="obs-table">
+              <thead><tr><th>Stage</th><th>Temperature</th><th>State</th><th>Particle Behaviour</th></tr></thead>
+              <tbody>
+                <tr><td>Initial</td><td>≤ 0°C</td><td>Solid (Ice)</td><td>Vibrating in fixed positions</td></tr>
+                <tr><td>Melting</td><td>0°C (constant)</td><td>Solid → Liquid</td><td>Breaking free from lattice</td></tr>
+                <tr><td>Liquid</td><td>1–99°C</td><td>Liquid</td><td>Sliding past each other</td></tr>
+                <tr><td>Boiling</td><td>100°C (constant)</td><td>Liquid → Gas</td><td>Escaping surface bonds</td></tr>
+                <tr><td>Steam</td><td>&gt;100°C</td><td>Gas</td><td>Random rapid movement</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="exp-aims" style="margin-top:1rem;">
+            <h4>Conclusion</h4>
+            <p>Water exists in three states. Phase changes occur at fixed temperatures (melting point = 0°C, boiling point = 100°C). During phase change, temperature remains constant as heat is used to break interparticle bonds (latent heat).</p>
+          </div>
+          <a href="simulator.html" class="sim-launch-btn">🧪 Launch Simulator – Select Water</a>
+        </div>
+      </div>
+
+      <!-- EXP 2 -->
+      <div class="exp-card" id="exp-2">
+        <div class="exp-header" onclick="toggleExp('exp-2')">
+          <span class="exp-num">02</span>
+          <span class="exp-emoji">🟣</span>
+          <div class="exp-title-wrap">
+            <div class="exp-title">Diffusion of KMnO₄ in Water</div>
+            <div class="exp-subtitle">Demonstrating diffusion and effect of temperature</div>
+          </div>
+          <div class="exp-badges">
+            <span class="exp-badge cls">Class 6, 9</span>
+            <span class="exp-badge diff" style="background:rgba(56,189,248,0.2);color:#38bdf8;">Easy</span>
+          </div>
+          <span class="exp-chevron">▶</span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-aims">
+            <h4>Aim</h4>
+            <p>To demonstrate diffusion in liquids using KMnO₄ (potassium permanganate) crystals and study the effect of temperature on diffusion rate.</p>
+            <h4 style="margin-top:0.8rem;">Materials</h4>
+            <ul><li>KMnO₄ crystals | 2 beakers | Cold water | Hot water | Stopwatch | Dropper</li></ul>
+          </div>
+          <div class="exp-steps">
+            <h4 style="font-size:0.78rem;font-weight:700;font-family:var(--font-mono);color:var(--accent-primary);text-transform:uppercase;letter-spacing:0.5px;margin:1rem 0 0.5rem;">Procedure</h4>
+            <div class="exp-step"><div class="step-num">1</div><div class="step-text">Fill Beaker A with cold water and Beaker B with hot water (same volume).</div></div>
+            <div class="exp-step"><div class="step-num">2</div><div class="step-text">Using a dropper, carefully place one drop of KMnO₄ solution in the centre of each beaker (do NOT stir).</div></div>
+            <div class="exp-step"><div class="step-num">3</div><div class="step-text">Observe and time how long it takes for colour to spread completely in each beaker.</div></div>
+            <div class="exp-step"><div class="step-num">4</div><div class="step-text">Record observations every 2 minutes for 10 minutes.</div></div>
+          </div>
+          <div class="exp-aims" style="margin-top:1rem;">
+            <h4>Observations</h4>
+            <table class="obs-table">
+              <thead><tr><th>Beaker</th><th>Temperature</th><th>Time for full diffusion</th><th>Rate</th></tr></thead>
+              <tbody>
+                <tr><td>A</td><td>Cold (~10°C)</td><td>~20–25 minutes</td><td>Slow</td></tr>
+                <tr><td>B</td><td>Hot (~70°C)</td><td>~3–5 minutes</td><td>Fast</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="exp-aims" style="margin-top:1rem;">
+            <h4>Conclusion</h4>
+            <p>Diffusion occurs in liquids due to continuous random motion of particles. Higher temperature → greater kinetic energy → faster diffusion. The KMnO₄ particles move from high concentration to low concentration spontaneously.</p>
+          </div>
+          <a href="simulator.html" class="sim-launch-btn">🧪 Launch Simulator – Diffusion Tab</a>
+        </div>
+      </div>
+
+      <!-- EXP 3 -->
+      <div class="exp-card" id="exp-3">
+        <div class="exp-header" onclick="toggleExp('exp-3')">
+          <span class="exp-num">03</span>
+          <span class="exp-emoji">🔦</span>
+          <div class="exp-title-wrap">
+            <div class="exp-title">Tyndall Effect – Colloid vs Solution</div>
+            <div class="exp-subtitle">Identifying colloids using laser light scattering</div>
+          </div>
+          <div class="exp-badges">
+            <span class="exp-badge cls">Class 9</span>
+            <span class="exp-badge diff" style="background:rgba(52,211,153,0.2);color:#34d399;">Medium</span>
+          </div>
+          <span class="exp-chevron">▶</span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-aims">
+            <h4>Aim</h4>
+            <p>To distinguish between a true solution, colloid, and suspension using the Tyndall effect (light scattering).</p>
+            <h4 style="margin-top:0.8rem;">Materials</h4>
+            <ul><li>Beakers | Salt solution (true solution) | Starch/milk solution (colloid) | Chalk water (suspension) | Laser pointer / strong torch | Dark room</li></ul>
+          </div>
+          <div class="exp-steps">
+            <h4 style="font-size:0.78rem;font-weight:700;font-family:var(--font-mono);color:var(--accent-primary);text-transform:uppercase;letter-spacing:0.5px;margin:1rem 0 0.5rem;">Procedure</h4>
+            <div class="exp-step"><div class="step-num">1</div><div class="step-text">Prepare three beakers: (A) Salt dissolved in water, (B) Starch dissolved in water, (C) Chalk powder mixed in water.</div></div>
+            <div class="exp-step"><div class="step-num">2</div><div class="step-text">In a dark room, shine a laser beam through each solution from the side.</div></div>
+            <div class="exp-step"><div class="step-num">3</div><div class="step-text">Observe whether the beam path is visible (scattering) or invisible (no scattering) in each beaker.</div></div>
+            <div class="exp-step"><div class="step-num">4</div><div class="step-text">Allow Beaker C to rest for 30 minutes and observe settling.</div></div>
+          </div>
+          <div class="exp-aims" style="margin-top:1rem;">
+            <h4>Observations</h4>
+            <table class="obs-table">
+              <thead><tr><th>Sample</th><th>Type</th><th>Beam Visible?</th><th>Settles?</th></tr></thead>
+              <tbody>
+                <tr><td>Salt water</td><td>True Solution</td><td>❌ No</td><td>No</td></tr>
+                <tr><td>Starch / Milk</td><td>Colloid</td><td>✅ Yes (Tyndall)</td><td>No</td></tr>
+                <tr><td>Chalk water</td><td>Suspension</td><td>✅ Yes</td><td>✅ Yes</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="exp-aims" style="margin-top:1rem;">
+            <h4>Conclusion</h4>
+            <p>Colloids show the Tyndall effect because their particles (1–100nm) scatter light. True solutions with particles &lt;1nm do not scatter light. Suspensions also scatter light but particles settle out.</p>
+          </div>
+          <a href="simulator.html" class="sim-launch-btn">🧪 Launch Simulator – Solutions Tab</a>
+        </div>
+      </div>
+
+      <!-- EXP 4 -->
+      <div class="exp-card" id="exp-4">
+        <div class="exp-header" onclick="toggleExp('exp-4')">
+          <span class="exp-num">04</span>
+          <span class="exp-emoji">🏔️</span>
+          <div class="exp-title-wrap">
+            <div class="exp-title">Sublimation of Camphor / Naphthalene</div>
+            <div class="exp-subtitle">Solid directly converting to gas</div>
+          </div>
+          <div class="exp-badges">
+            <span class="exp-badge cls">Class 6, 9</span>
+            <span class="exp-badge diff" style="background:rgba(56,189,248,0.2);color:#38bdf8;">Easy</span>
+          </div>
+          <span class="exp-chevron">▶</span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-aims">
+            <h4>Aim</h4>
+            <p>To observe and understand the process of sublimation using camphor and to collect the sublimed vapour.</p>
+            <h4 style="margin-top:0.8rem;">Materials</h4>
+            <ul><li>Camphor tablets | China dish | Glass funnel | Cotton | Bunsen burner | Tongs</li></ul>
+          </div>
+          <div class="exp-steps">
+            <h4 style="font-size:0.78rem;font-weight:700;font-family:var(--font-mono);color:var(--accent-primary);text-transform:uppercase;letter-spacing:0.5px;margin:1rem 0 0.5rem;">Procedure</h4>
+            <div class="exp-step"><div class="step-num">1</div><div class="step-text">Place camphor tablets in the china dish on a wire gauze and tripod stand.</div></div>
+            <div class="exp-step"><div class="step-num">2</div><div class="step-text">Invert a glass funnel over the china dish. Plug the top of the funnel with a cotton ball to prevent escape of vapours.</div></div>
+            <div class="exp-step"><div class="step-num">3</div><div class="step-text">Heat gently with a spirit lamp or Bunsen burner.</div></div>
+            <div class="exp-step"><div class="step-num">4</div><div class="step-text">Observe camphor disappearing WITHOUT melting first. White crystals form on the inner walls of the funnel (deposition).</div></div>
+            <div class="exp-step"><div class="step-num">5</div><div class="step-text">Stop heating and let cool. Collect the white crystals — this is pure camphor (purification by sublimation!).</div></div>
+          </div>
+          <div class="exp-aims" style="margin-top:1rem;">
+            <h4>Conclusion</h4>
+            <p>Camphor undergoes sublimation — it converts directly from solid to gas on heating. The gas then deposits back as solid on the cooler funnel walls. This property is used to purify camphor (and iodine, naphthalene).</p>
+          </div>
+          <a href="simulator.html" class="sim-launch-btn">🧪 See Sublimation – Select Camphor</a>
+        </div>
+      </div>
+
+      <!-- EXP 5 -->
+      <div class="exp-card" id="exp-5">
+        <div class="exp-header" onclick="toggleExp('exp-5')">
+          <span class="exp-num">05</span>
+          <span class="exp-emoji">🧂</span>
+          <div class="exp-title-wrap">
+            <div class="exp-title">Saturated &amp; Unsaturated Solutions</div>
+            <div class="exp-subtitle">Finding the solubility limit of salt in water</div>
+          </div>
+          <div class="exp-badges">
+            <span class="exp-badge cls">Class 6, 9</span>
+            <span class="exp-badge diff" style="background:rgba(56,189,248,0.2);color:#38bdf8;">Easy</span>
+          </div>
+          <span class="exp-chevron">▶</span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-aims">
+            <h4>Aim</h4>
+            <p>To understand the concept of solubility by finding when a solution becomes saturated with salt (NaCl) at room temperature.</p>
+          </div>
+          <div class="exp-steps">
+            <h4 style="font-size:0.78rem;font-weight:700;font-family:var(--font-mono);color:var(--accent-primary);text-transform:uppercase;letter-spacing:0.5px;margin:1rem 0 0.5rem;">Procedure</h4>
+            <div class="exp-step"><div class="step-num">1</div><div class="step-text">Take 100 ml of water in a beaker at room temperature (~25°C).</div></div>
+            <div class="exp-step"><div class="step-num">2</div><div class="step-text">Add 5g of NaCl and stir until dissolved completely — this is an unsaturated solution.</div></div>
+            <div class="exp-step"><div class="step-num">3</div><div class="step-text">Continue adding 5g portions and stirring. Record when salt no longer dissolves.</div></div>
+            <div class="exp-step"><div class="step-num">4</div><div class="step-text">When undissolved salt remains at bottom — solution is saturated.</div></div>
+            <div class="exp-step"><div class="step-num">5</div><div class="step-text">Warm the solution and observe: saturated solution can dissolve more salt at higher temperature.</div></div>
+          </div>
+          <div class="exp-aims" style="margin-top:1rem;">
+            <h4>Observations</h4>
+            <table class="obs-table">
+              <thead><tr><th>Salt Added</th><th>Observation</th><th>State of Solution</th></tr></thead>
+              <tbody>
+                <tr><td>5g, 10g, 15g</td><td>Dissolves completely</td><td>Unsaturated</td></tr>
+                <tr><td>~36g</td><td>Just fully dissolves</td><td>Saturated (25°C)</td></tr>
+                <tr><td>40g+</td><td>Salt remains undissolved</td><td>Saturated + excess</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <a href="simulator.html" class="sim-launch-btn">🧪 See in Solutions Tab</a>
+        </div>
+      </div>
+
+      <!-- EXP 6 -->
+      <div class="exp-card" id="exp-6">
+        <div class="exp-header" onclick="toggleExp('exp-6')">
+          <span class="exp-num">06</span>
+          <span class="exp-emoji">💨</span>
+          <div class="exp-title-wrap">
+            <div class="exp-title">Effect of Temperature on Rate of Diffusion in Gases</div>
+            <div class="exp-subtitle">Comparing diffusion speeds at different temperatures</div>
+          </div>
+          <div class="exp-badges">
+            <span class="exp-badge cls">Class 9</span>
+            <span class="exp-badge diff" style="background:rgba(52,211,153,0.2);color:#34d399;">Medium</span>
+          </div>
+          <span class="exp-chevron">▶</span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-aims">
+            <h4>Aim</h4>
+            <p>To show that gases diffuse faster at higher temperatures using an ammonia and HCl demonstration.</p>
+            <h4 style="margin-top:0.8rem;">Materials</h4>
+            <ul><li>Long glass tube (30cm) | Cotton wool | Ammonia solution | HCl solution | Clamp stand | Ruler</li></ul>
+          </div>
+          <div class="exp-steps">
+            <h4 style="font-size:0.78rem;font-weight:700;font-family:var(--font-mono);color:var(--accent-primary);text-transform:uppercase;letter-spacing:0.5px;margin:1rem 0 0.5rem;">Procedure</h4>
+            <div class="exp-step"><div class="step-num">1</div><div class="step-text">Soak one cotton plug in ammonia solution and another in concentrated HCl.</div></div>
+            <div class="exp-step"><div class="step-num">2</div><div class="step-text">Simultaneously insert one plug at each end of the horizontal glass tube and seal lightly.</div></div>
+            <div class="exp-step"><div class="step-num">3</div><div class="step-text">Observe where a white ring of NH₄Cl (ammonium chloride) forms inside the tube.</div></div>
+            <div class="exp-step"><div class="step-num">4</div><div class="step-text">Measure the distance of the white ring from each end. Lighter NH₃ gas travels faster → ring forms closer to HCl end.</div></div>
+          </div>
+          <div class="exp-aims" style="margin-top:1rem;">
+            <h4>Conclusion</h4>
+            <p>NH₃ (lighter gas, mol. mass = 17) diffuses faster than HCl (heavier gas, mol. mass = 36.5). This confirms Graham's Law: Rate of diffusion is inversely proportional to square root of molar mass.</p>
+          </div>
+          <a href="simulator.html" class="sim-launch-btn">🧪 See Diffusion in Simulator</a>
+        </div>
+      </div>
+
+      <!-- EXP 7 -->
+      <div class="exp-card" id="exp-7">
+        <div class="exp-header" onclick="toggleExp('exp-7')">
+          <span class="exp-num">07</span>
+          <span class="exp-emoji">🌡️</span>
+          <div class="exp-title-wrap">
+            <div class="exp-title">Effect of Pressure on Boiling Point</div>
+            <div class="exp-subtitle">How reduced pressure lowers boiling point</div>
+          </div>
+          <div class="exp-badges">
+            <span class="exp-badge cls">Class 9</span>
+            <span class="exp-badge diff" style="background:rgba(251,191,36,0.2);color:#fbbf24;">Advanced</span>
+          </div>
+          <span class="exp-chevron">▶</span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-aims">
+            <h4>Aim</h4>
+            <p>To demonstrate that the boiling point of water decreases when pressure is reduced (as happens at high altitudes).</p>
+          </div>
+          <div class="exp-steps">
+            <h4 style="font-size:0.78rem;font-weight:700;font-family:var(--font-mono);color:var(--accent-primary);text-transform:uppercase;letter-spacing:0.5px;margin:1rem 0 0.5rem;">Virtual Procedure (Simulator)</h4>
+            <div class="exp-step"><div class="step-num">1</div><div class="step-text">Open the Simulator and select <strong>Water (Paani)</strong> from the substance picker.</div></div>
+            <div class="exp-step"><div class="step-num">2</div><div class="step-text">Set Temperature to 100°C — observe water boiling at standard pressure (P=0).</div></div>
+            <div class="exp-step"><div class="step-num">3</div><div class="step-text">Decrease the Pressure slider. Observe the transition to gas state at <em>lower temperatures</em>.</div></div>
+            <div class="exp-step"><div class="step-num">4</div><div class="step-text">Record the temperature at which water boils under reduced pressure.</div></div>
+          </div>
+          <div class="exp-aims" style="margin-top:1rem;">
+            <h4>Real-world Application</h4>
+            <p>At high altitudes (e.g., Himalayan mountains), atmospheric pressure is lower, so water boils at &lt;100°C. This is why cooking takes longer at high altitudes — food cooks at lower temperatures.</p>
+          </div>
+          <a href="simulator.html" class="sim-launch-btn">🧪 Try in Simulator – Pressure Slider</a>
+        </div>
+      </div>
+
+      <!-- EXP 8 -->
+      <div class="exp-card" id="exp-8">
+        <div class="exp-header" onclick="toggleExp('exp-8')">
+          <span class="exp-num">08</span>
+          <span class="exp-emoji">☁️</span>
+          <div class="exp-title-wrap">
+            <div class="exp-title">Brownian Motion in Colloids</div>
+            <div class="exp-subtitle">Observing random particle movement</div>
+          </div>
+          <div class="exp-badges">
+            <span class="exp-badge cls">Class 9</span>
+            <span class="exp-badge diff" style="background:rgba(52,211,153,0.2);color:#34d399;">Medium</span>
+          </div>
+          <span class="exp-chevron">▶</span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-aims">
+            <h4>Aim</h4>
+            <p>To observe Brownian motion in a colloid and understand why colloidal particles do not settle.</p>
+            <h4 style="margin-top:0.8rem;">Materials</h4>
+            <ul><li>Dilute milk solution (or starch solution) | Microscope | Slide | Cover slip | Strong light source</li></ul>
+          </div>
+          <div class="exp-steps">
+            <h4 style="font-size:0.78rem;font-weight:700;font-family:var(--font-mono);color:var(--accent-primary);text-transform:uppercase;letter-spacing:0.5px;margin:1rem 0 0.5rem;">Procedure</h4>
+            <div class="exp-step"><div class="step-num">1</div><div class="step-text">Prepare a dilute milk solution (1 drop of milk in 100ml water) for better clarity.</div></div>
+            <div class="exp-step"><div class="step-num">2</div><div class="step-text">Place a drop on a microscope slide, add cover slip carefully without air bubbles.</div></div>
+            <div class="exp-step"><div class="step-num">3</div><div class="step-text">Observe under high magnification with strong side lighting.</div></div>
+            <div class="exp-step"><div class="step-num">4</div><div class="step-text">Observe tiny fat globules moving in random, zigzag paths continuously.</div></div>
+          </div>
+          <div class="exp-aims" style="margin-top:1rem;">
+            <h4>Conclusion</h4>
+            <p>The random zigzag motion of colloidal particles is called Brownian Motion. It is caused by unequal bombardment of colloidal particles by the surrounding smaller water molecules. This motion keeps colloid particles from settling.</p>
+          </div>
+          <a href="simulator.html" class="sim-launch-btn">🧪 See Colloid Tab – Brownian Motion</a>
+        </div>
+      </div>
+
+      <!-- EXP 9 -->
+      <div class="exp-card" id="exp-9">
+        <div class="exp-header" onclick="toggleExp('exp-9')">
+          <span class="exp-num">09</span>
+          <span class="exp-emoji">🌊</span>
+          <div class="exp-title-wrap">
+            <div class="exp-title">Separation of Mixtures – Filtration &amp; Evaporation</div>
+            <div class="exp-subtitle">Separating salt from sand-water mixture</div>
+          </div>
+          <div class="exp-badges">
+            <span class="exp-badge cls">Class 6, 7</span>
+            <span class="exp-badge diff" style="background:rgba(56,189,248,0.2);color:#38bdf8;">Easy</span>
+          </div>
+          <span class="exp-chevron">▶</span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-aims">
+            <h4>Aim</h4>
+            <p>To separate salt from a sand-salt mixture using filtration and evaporation techniques.</p>
+          </div>
+          <div class="exp-steps">
+            <h4 style="font-size:0.78rem;font-weight:700;font-family:var(--font-mono);color:var(--accent-primary);text-transform:uppercase;letter-spacing:0.5px;margin:1rem 0 0.5rem;">Procedure</h4>
+            <div class="exp-step"><div class="step-num">1</div><div class="step-text">Mix sand and salt together, then dissolve in water (salt dissolves, sand does not).</div></div>
+            <div class="exp-step"><div class="step-num">2</div><div class="step-text"><strong>Filtration:</strong> Pour the mixture through filter paper in a funnel. Sand stays on filter paper; saltwater passes through.</div></div>
+            <div class="exp-step"><div class="step-num">3</div><div class="step-text"><strong>Evaporation:</strong> Heat the filtered saltwater in an evaporating dish. Water evaporates; salt crystals remain.</div></div>
+            <div class="exp-step"><div class="step-num">4</div><div class="step-text">Cool and collect the white salt crystals. Weigh to compare with original amount.</div></div>
+          </div>
+          <div class="exp-aims" style="margin-top:1rem;">
+            <h4>Conclusion</h4>
+            <p>Filtration separates insoluble solid (sand) from liquid mixture. Evaporation separates soluble solid (salt) from its solution. These are physical separation methods that exploit differences in solubility and boiling point.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXP 10 -->
+      <div class="exp-card" id="exp-10">
+        <div class="exp-header" onclick="toggleExp('exp-10')">
+          <span class="exp-num">10</span>
+          <span class="exp-emoji">🔥</span>
+          <div class="exp-title-wrap">
+            <div class="exp-title">Latent Heat Demonstration</div>
+            <div class="exp-subtitle">Why 0°C steam burns more than 0°C water</div>
+          </div>
+          <div class="exp-badges">
+            <span class="exp-badge cls">Class 9</span>
+            <span class="exp-badge diff" style="background:rgba(251,191,36,0.2);color:#fbbf24;">Advanced</span>
+          </div>
+          <span class="exp-chevron">▶</span>
+        </div>
+        <div class="exp-body">
+          <div class="exp-aims">
+            <h4>Aim</h4>
+            <p>To understand latent heat by comparing the cooling effect of melting ice vs cold water at the same temperature.</p>
+          </div>
+          <div class="exp-steps">
+            <h4 style="font-size:0.78rem;font-weight:700;font-family:var(--font-mono);color:var(--accent-primary);text-transform:uppercase;letter-spacing:0.5px;margin:1rem 0 0.5rem;">Virtual Procedure (Simulator)</h4>
+            <div class="exp-step"><div class="step-num">1</div><div class="step-text">Open Simulator, select <strong>Water</strong>, set Temperature to exactly 0°C. Observe: the Latent Heat Indicator flashes — system at melting point.</div></div>
+            <div class="exp-step"><div class="step-num">2</div><div class="step-text">Observe that the AHA box shows: "Melting happening — temperature stays at 0°C even though heat is being added."</div></div>
+            <div class="exp-step"><div class="step-num">3</div><div class="step-text">Note: Steam at 100°C has MORE energy than water at 100°C by the latent heat of vaporisation (2260 kJ/kg).</div></div>
+          </div>
+          <div class="exp-aims" style="margin-top:1rem;">
+            <h4>Key Values to Remember</h4>
+            <table class="obs-table">
+              <thead><tr><th>Property</th><th>Water (Ice → Water)</th><th>Water (Water → Steam)</th></tr></thead>
+              <tbody>
+                <tr><td>Temperature</td><td>0°C (constant)</td><td>100°C (constant)</td></tr>
+                <tr><td>Latent Heat</td><td>334 kJ/kg (Fusion)</td><td>2260 kJ/kg (Vaporisation)</td></tr>
+                <tr><td>Particle change</td><td>Breaks lattice bonds</td><td>Overcomes surface tension</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <a href="simulator.html" class="sim-launch-btn">🧪 See Latent Heat Indicator</a>
+        </div>
+      </div>
+
+    </div><!-- /exp-list -->
+  </main>
+
+  <footer style="text-align:center;padding:1.5rem;border-top:1px solid var(--border-subtle);font-size:0.78rem;color:var(--text-muted);">
+    MatterLab v4.0 &nbsp;|&nbsp; <a href="about.html" style="color:var(--accent-primary);text-decoration:none;">About &amp; Disclaimer</a>
+  </footer>
+
+  <script src="js/shared-nav.js"></script>
+  <script>
+    function toggleExp(id) {
+      const card = document.getElementById(id);
+      const wasOpen = card.classList.contains('open');
+      document.querySelectorAll('.exp-card.open').forEach(function(c) { c.classList.remove('open'); });
+      if (!wasOpen) card.classList.add('open');
+    }
+  </script>
+</body>
+</html>

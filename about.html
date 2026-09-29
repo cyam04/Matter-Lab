@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MatterLab – About &amp; Teacher Guide</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+</head>
+<body class="page-body">
+
+  <nav class="global-navbar">
+    <a href="index.html" class="nav-brand">⚗️ MatterLab</a>
+    <ul class="nav-links">
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="simulator.html">🧪 Simulator</a></li>
+      <li><a href="learn.html">📚 Learn</a></li>
+      <li><a href="experiments.html">🔬 Experiments</a></li>
+      <li><a href="quiz.html">📊 Quiz</a></li>
+      <li><a href="dashboard.html">🏆 Progress</a></li>
+      <li><a href="about.html" class="active">ℹ️ About</a></li>
+    </ul>
+    <div class="nav-right">
+      <button id="btn-theme" style="background:none;border:none;cursor:pointer;font-size:1.2rem;color:var(--text-primary)">☀️</button>
+      <button id="hamburger" class="hamburger">☰</button>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="index.html">🏠 Home</a>
+    <a href="simulator.html">🧪 Simulator</a>
+    <a href="learn.html">📚 Learn</a>
+    <a href="experiments.html">🔬 Experiments</a>
+    <a href="quiz.html">📊 Quiz</a>
+    <a href="dashboard.html">🏆 Progress</a>
+    <a href="about.html" class="active">ℹ️ About</a>
+  </div>
+
+  <!-- ABOUT HERO -->
+  <div class="about-hero-section fade-up">
+    <div style="font-size:3.5rem;margin-bottom:1rem;">⚗️</div>
+    <h1 style="font-family:var(--font-label);font-size:clamp(2rem,4vw,3rem);font-weight:900;margin-bottom:0.8rem;">About MatterLab</h1>
+    <p style="color:var(--text-muted);font-size:1rem;line-height:1.7;">An interactive, visual chemistry learning platform for Class 6–10 students. Runs entirely in the browser — no installation, no login required.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem;">
+      <span style="background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.3);color:var(--accent-primary);padding:0.3rem 0.9rem;border-radius:99px;font-size:0.78rem;font-weight:700;">v4.0</span>
+      <span style="background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.3);color:#a78bfa;padding:0.3rem 0.9rem;border-radius:99px;font-size:0.78rem;font-weight:700;">Open Educational</span>
+      <span style="background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.3);color:#34d399;padding:0.3rem 0.9rem;border-radius:99px;font-size:0.78rem;font-weight:700;">No Internet for Simulator</span>
+    </div>
+  </div>
+
+  <main class="page-section" style="padding-top:1rem;">
+    <div class="about-grid">
+
+      <div class="about-card">
+        <div class="about-card-title">🎯 What MatterLab Does</div>
+        <ul>
+          <li>2D Canvas particle physics simulator for Phase Changes, Diffusion, and Solutions (Tyndall Effect)</li>
+          <li>50+ real substances (15 solids, 15 liquids, 20 gases) with accurate phase data</li>
+          <li>NCERT-aligned theory notes for Class 6–10</li>
+          <li>10 guided virtual experiments with full procedures and observation tables</li>
+          <li>Topic-wise MCQ quizzes (40+ questions) with instant feedback</li>
+          <li>Student progress dashboard with achievement badges (localStorage)</li>
+          <li>Hinglish / English language toggle for Indian students</li>
+          <li>Teacher/Classroom mode (Fullscreen, Smart Board optimised)</li>
+        </ul>
+      </div>
+
+      <div class="about-card">
+        <div class="about-card-title">🛠️ Technology Used</div>
+        <ul>
+          <li><strong>HTML5 Canvas 2D API</strong> — Particle physics engine (no external libraries)</li>
+          <li><strong>Vanilla JavaScript (ES6+)</strong> — All simulation logic and UI</li>
+          <li><strong>CSS3</strong> — Glassmorphism, animations, responsive layout</li>
+          <li><strong>Google Fonts</strong> — Inter, Nunito, JetBrains Mono</li>
+          <li><strong>localStorage API</strong> — Student progress tracking</li>
+          <li><strong>No frameworks, no dependencies</strong> — runs instantly offline</li>
+          <li><strong>ARIA labels</strong> — Accessibility for screen readers</li>
+        </ul>
+      </div>
+
+      <div class="about-card">
+        <div class="about-card-title">📖 Curriculum Mapping</div>
+        <table class="curriculum-table">
+          <thead><tr><th>Class</th><th>Chapter</th><th>Topics Covered</th></tr></thead>
+          <tbody>
+            <tr><td>6</td><td>Ch.4</td><td>States of Matter, Evaporation, Mixtures</td></tr>
+            <tr><td>7</td><td>Ch.6</td><td>Physical &amp; Chemical Changes</td></tr>
+            <tr><td>8</td><td>Ch.3</td><td>Atoms &amp; Molecules (intro)</td></tr>
+            <tr><td>9</td><td>Ch.1</td><td>Matter (Kinetic Theory, Latent Heat, Sublimation)</td></tr>
+            <tr><td>9</td><td>Ch.2</td><td>Pure Substances, Solutions, Colloids, Tyndall</td></tr>
+            <tr><td>10</td><td>Ch.1</td><td>Chemical Reactions &amp; Equations</td></tr>
+            <tr><td>10</td><td>Ch.2</td><td>Acids, Bases &amp; Salts</td></tr>
+            <tr><td>10</td><td>Ch.3</td><td>Metals &amp; Non-metals</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="about-card">
+        <div class="about-card-title">👩‍🏫 Teacher Guide</div>
+        <ul>
+          <li><strong>Classroom Setup:</strong> Open on projector/Smart Board, press <kbd style="background:var(--bg-base);padding:1px 4px;border-radius:3px;font-family:var(--font-mono);font-size:0.8rem;">F</kbd> for Fullscreen mode</li>
+          <li><strong>States of Matter (Tab 1):</strong> Select substance → move temperature slider → observe live phase change with AHA box explanations</li>
+          <li><strong>Diffusion (Tab 2):</strong> Remove barrier → watch KMnO₄-style diffusion with temperature control</li>
+          <li><strong>Solutions (Tab 3):</strong> Toggle between Solution/Colloid/Suspension → use laser to demonstrate Tyndall Effect</li>
+          <li><strong>Language:</strong> Use HI toggle for Hinglish mode to support regional students</li>
+          <li><strong>Quiz:</strong> Assign specific topic quizzes as pre/post lesson assessment</li>
+        </ul>
+      </div>
+
+    </div><!-- /about-grid -->
+
+    <!-- SIMULATOR MODULES -->
+    <div class="about-card" style="margin-top:1.5rem;">
+      <div class="about-card-title">⚗️ Simulator Features in Detail</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin-top:0.8rem;">
+        <div style="background:var(--bg-card2);border-radius:var(--radius-md);padding:1rem;">
+          <div style="font-weight:800;margin-bottom:0.4rem;color:var(--accent-primary);">🧊 Module 1 – States &amp; Phase Changes</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);line-height:1.5;">50 substances | Temperature -50°C to 200°C | Pressure slider | Latent heat indicator | 3D particle rendering | Temperature-tinted background</div>
+        </div>
+        <div style="background:var(--bg-card2);border-radius:var(--radius-md);padding:1rem;">
+          <div style="font-weight:800;margin-bottom:0.4rem;color:var(--accent-secondary);">💨 Module 2 – Diffusion</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);line-height:1.5;">Two-chamber system | Removable barrier | 44 particles per side | Temperature control | Real-time diffusion percentage meter</div>
+        </div>
+        <div style="background:var(--bg-card2);border-radius:var(--radius-md);padding:1rem;">
+          <div style="font-weight:800;margin-bottom:0.4rem;color:#34d399;">🔬 Module 3 – Solutions &amp; Tyndall</div>
+          <div style="font-size:0.82rem;color:var(--text-muted);line-height:1.5;">Solution | Colloid | Suspension modes | Laser beam toggle | Tyndall scattering simulation | Brownian motion | Sand settling animation</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer-box" style="margin-top:1.5rem;">
+      <strong>⚠️ Important Disclaimer</strong><br/><br/>
+      MatterLab is an <strong>educational simulation tool</strong> designed to visually illustrate chemistry concepts for Class 6–10 students. Please note:
+      <ul style="margin:0.8rem 0 0;padding-left:1.2rem;line-height:1.8;">
+        <li>Particle simulations are <strong>simplified models</strong> for educational purposes and do not accurately represent real atomic/molecular behaviour at the quantum level.</li>
+        <li>Phase change temperatures shown in the simulator are <strong>scaled for demonstration</strong> and may not match real-world values exactly.</li>
+        <li>All chemistry content is derived from <strong>NCERT textbooks (Class 6–10)</strong> for educational reference only — no copyright infringement is intended.</li>
+        <li>The quiz questions are created for educational assessment purposes and are <strong>not official examination questions</strong>.</li>
+        <li>Always refer to your <strong>school textbooks and teacher guidance</strong> for examination preparation.</li>
+        <li>All student progress data is stored <strong>locally in your browser</strong> (localStorage) — no data is sent to any server.</li>
+      </ul>
+    </div>
+
+    <!-- VERSION INFO -->
+    <div style="margin-top:1.5rem;padding:1rem 1.2rem;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-md);font-size:0.8rem;color:var(--text-muted);font-family:var(--font-mono);">
+      <strong style="color:var(--text-primary);">Version History</strong><br/>
+      v1.0 — Initial build (3 substances, basic simulator)<br/>
+      v2.0 — 50 substances, 3D particles, gas trails, temperature-tinted BG<br/>
+      v3.0 — Documentation system (CHANGELOG.md, FILE_GUIDE.md)<br/>
+      v4.0 — Multipage platform (Home, Learn, Experiments, Quiz, Dashboard, About) + mobile responsive navbar
+    </div>
+  </main>
+
+  <footer style="text-align:center;padding:1.5rem;border-top:1px solid var(--border-subtle);font-size:0.78rem;color:var(--text-muted);">
+    MatterLab v4.0 — K-10 Interactive Chemistry Platform &nbsp;|&nbsp; Educational Use Only
+  </footer>
+
+  <script src="js/shared-nav.js"></script>
+</body>
+</html>

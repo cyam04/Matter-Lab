@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="MatterLab Learn – NCERT-aligned chemistry theory notes for Class 6 to 10. States of Matter, Atoms, Molecules, Diffusion, Solutions and more."/>
+  <title>MatterLab – Learn | Theory &amp; Notes</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/pages.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+</head>
+<body class="page-body">
+
+  <nav class="global-navbar">
+    <a href="index.html" class="nav-brand">⚗️ MatterLab</a>
+    <ul class="nav-links">
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="simulator.html">🧪 Simulator</a></li>
+      <li><a href="learn.html" class="active">📚 Learn</a></li>
+      <li><a href="experiments.html">🔬 Experiments</a></li>
+      <li><a href="quiz.html">📊 Quiz</a></li>
+      <li><a href="dashboard.html">🏆 Progress</a></li>
+      <li><a href="about.html">ℹ️ About</a></li>
+    </ul>
+    <div class="nav-right">
+      <button id="btn-theme" style="background:none;border:none;cursor:pointer;font-size:1.2rem;color:var(--text-primary)">☀️</button>
+      <button id="hamburger" class="hamburger">☰</button>
+    </div>
+  </nav>
+  <div id="mobile-menu" class="mobile-menu">
+    <a href="index.html">🏠 Home</a>
+    <a href="simulator.html">🧪 Simulator</a>
+    <a href="learn.html" class="active">📚 Learn</a>
+    <a href="experiments.html">🔬 Experiments</a>
+    <a href="quiz.html">📊 Quiz</a>
+    <a href="dashboard.html">🏆 Progress</a>
+    <a href="about.html">ℹ️ About</a>
+  </div>
+
+  <main class="page-section fade-up">
+    <h1 class="section-title">📚 Theory &amp; Notes</h1>
+    <p class="section-sub">NCERT-aligned chemistry concepts for Class 6–10. Filter by class, then click any topic to explore.</p>
+
+    <!-- CLASS FILTER -->
+    <div class="learn-filter-row" id="class-filters">
+      <button class="filter-chip active" data-filter="all">All Classes</button>
+      <button class="filter-chip" data-filter="6">Class 6</button>
+      <button class="filter-chip" data-filter="7">Class 7</button>
+      <button class="filter-chip" data-filter="8">Class 8</button>
+      <button class="filter-chip" data-filter="9">Class 9</button>
+      <button class="filter-chip" data-filter="10">Class 10</button>
+    </div>
+
+    <!-- TOPIC CARDS -->
+    <div class="learn-topics-grid" id="topics-grid">
+
+      <!-- CLASS 6 TOPICS -->
+      <div class="topic-card fade-up" data-class="6">
+        <div class="topic-card-header">
+          <span class="topic-icon">🧊</span>
+          <div>
+            <div class="topic-title">States of Matter</div>
+          </div>
+          <span class="topic-class-badge">Class 6</span>
+        </div>
+        <div class="topic-body">
+          <p>Matter exists in three main states — <strong>Solid</strong>, <strong>Liquid</strong>, and <strong>Gas</strong>. Each state has a definite particle arrangement:</p>
+          <ul>
+            <li><strong>Solid:</strong> Particles are tightly packed, vibrate in fixed positions. Definite shape and volume.</li>
+            <li><strong>Liquid:</strong> Particles are close but can slide past each other. Definite volume, no fixed shape.</li>
+            <li><strong>Gas:</strong> Particles are far apart, move randomly. No fixed shape or volume.</li>
+          </ul>
+          <div class="topic-key-box">
+            <strong>Key Concept</strong>
+            <p>States of matter depend on the balance between <em>interparticle attraction</em> and <em>kinetic energy</em> of particles.</p>
+          </div>
+          <a href="simulator.html" class="sim-link-btn">▶ See in Simulator</a>
+        </div>
+        <div class="topic-footer">
+          <span class="topic-tag">NCERT Ch.4</span>
+          <span class="topic-tag">Sorting Materials</span>
+        </div>
+      </div>
+
+      <div class="topic-card fade-up" data-class="6">
+        <div class="topic-card-header">
+          <span class="topic-icon">💧</span>
+          <div><div class="topic-title">Evaporation</div></div>
+          <span class="topic-class-badge">Class 6</span>
+        </div>
+        <div class="topic-body">
+          <p>Evaporation is the process where a liquid converts to gas (vapour) at temperatures <em>below</em> its boiling point, occurring only at the surface.</p>
+          <ul>
+            <li><strong>Factors that increase evaporation:</strong> Higher temperature, more surface area, wind/airflow, lower humidity.</li>
+            <li><strong>Cooling effect:</strong> Evaporation absorbs latent heat from surroundings — e.g., sweating cools the body.</li>
+          </ul>
+          <div class="topic-key-box">
+            <strong>Key Formula</strong>
+            <p>Rate of evaporation ∝ Temperature &amp; Surface Area</p>
+          </div>
+          <a href="simulator.html" class="sim-link-btn">▶ See in Simulator</a>
+        </div>
+        <div class="topic-footer">
+          <span class="topic-tag">NCERT Ch.4</span>
+          <span class="topic-tag">Evaporation</span>
+        </div>
+      </div>
+
+      <div class="topic-card fade-up" data-class="6">
+        <div class="topic-card-header">
+          <span class="topic-icon">🥣</span>
+          <div><div class="topic-title">Mixtures &amp; Solutions</div></div>
+          <span class="topic-class-badge">Class 6</span>
+        </div>
+        <div class="topic-body">
+          <p>A <strong>mixture</strong> is formed when two or more substances are mixed without a chemical reaction.</p>
+          <ul>
+            <li><strong>Homogeneous mixture:</strong> Uniform composition throughout (e.g., salt in water = solution).</li>
+            <li><strong>Heterogeneous mixture:</strong> Non-uniform composition (e.g., sand in water = suspension).</li>
+            <li>Mixtures can be separated by filtration, evaporation, distillation, and chromatography.</li>
+          </ul>
+          <div class="topic-key-box">
+            <strong>Remember</strong>
+            <p>In a solution: Solute + Solvent = Solution. Solute dissolves in the Solvent.</p>
+          </div>
+          <a href="simulator.html" class="sim-link-btn">▶ See Mixtures Tab</a>
+        </div>
+        <div class="topic-footer">
+          <span class="topic-tag">NCERT Ch.4</span>
+          <span class="topic-tag">Mixtures</span>
+        </div>
+      </div>
+
+      <!-- CLASS 7 TOPICS -->
+      <div class="topic-card fade-up" data-class="7">
+        <div class="topic-card-header">
+          <span class="topic-icon">⚗️</span>
+          <div><div class="topic-title">Physical &amp; Chemical Changes</div></div>
+          <span class="topic-class-badge">Class 7</span>
+        </div>
+        <div class="topic-body">
+          <p>Changes in matter are classified as physical or chemical:</p>
+          <ul>
+            <li><strong>Physical Change:</strong> No new substance formed. Reversible in most cases (e.g., melting ice, boiling water, tearing paper).</li>
+            <li><strong>Chemical Change:</strong> New substance(s) formed. Usually irreversible (e.g., burning wood, rusting iron, cooking food).</li>
+          </ul>
+          <div class="topic-key-box">
+            <strong>Test for Chemical Change</strong>
+            <p>Change in colour, smell, temperature, gas evolution, or precipitate formation.</p>
+          </div>
+        </div>
+        <div class="topic-footer">
+          <span class="topic-tag">NCERT Ch.6</span>
+          <span class="topic-tag">Physical Chemical</span>
+        </div>
+      </div>
+
+      <!-- CLASS 8 TOPICS -->
+      <div class="topic-card fade-up" data-class="8">
+        <div class="topic-card-header">
+          <span class="topic-icon">⚛️</span>
+          <div><div class="topic-title">Atoms &amp; Molecules</div></div>
+          <span class="topic-class-badge">Class 8</span>
+        </div>
+        <div class="topic-body">
+          <p>All matter is made of tiny particles called <strong>atoms</strong>. Atoms combine to form <strong>molecules</strong>.</p>
+          <ul>
+            <li><strong>Atom:</strong> Smallest unit of an element that retains its chemical properties.</li>
+            <li><strong>Molecule:</strong> Two or more atoms bonded together (e.g., H₂O, CO₂, O₂).</li>
+            <li><strong>Dalton's Atomic Theory:</strong> All matter is made of atoms; atoms of the same element are identical; atoms combine in fixed ratios.</li>
+          </ul>
+          <div class="topic-key-box">
+            <strong>Common Molecules</strong>
+            <p>Water = H₂O | Salt = NaCl | Carbon dioxide = CO₂ | Oxygen = O₂</p>
+          </div>
+        </div>
+        <div class="topic-footer">
+          <span class="topic-tag">NCERT Ch.3</span>
+          <span class="topic-tag">Atoms Molecules</span>
+        </div>
+      </div>
+
+      <!-- CLASS 9 TOPICS -->
+      <div class="topic-card fade-up" data-class="9">
+        <div class="topic-card-header">
+          <span class="topic-icon">🌡️</span>
+          <div><div class="topic-title">Matter in Our Surroundings</div></div>
+          <span class="topic-class-badge">Class 9</span>
+        </div>
+        <div class="topic-body">
+          <p>This is the core chapter on particle nature of matter for Class 9:</p>
+          <ul>
+            <li><strong>Particles of matter are constantly moving</strong> — this is called the Kinetic Theory.</li>
+            <li><strong>Latent Heat of Fusion:</strong> Heat needed to convert solid to liquid at melting point without temperature change.</li>
+            <li><strong>Latent Heat of Vaporisation:</strong> Heat needed to convert liquid to gas at boiling point.</li>
+            <li><strong>Sublimation:</strong> Solid directly converting to gas (e.g., camphor, iodine, dry ice).</li>
+            <li><strong>Plasma:</strong> Fourth state — ionised gas at extremely high temperatures.</li>
+          </ul>
+          <div class="topic-key-box">
+            <strong>Phase Change Summary</strong>
+            <p>Solid ⇌ Liquid (Melting/Freezing) | Liquid ⇌ Gas (Vaporisation/Condensation) | Solid ⇌ Gas (Sublimation)</p>
+          </div>
+          <a href="simulator.html" class="sim-link-btn">▶ See Phase Changes</a>
+        </div>
+        <div class="topic-footer">
+          <span class="topic-tag">NCERT Ch.1</span>
+          <span class="topic-tag">Kinetic Theory</span>
+          <span class="topic-tag">Latent Heat</span>
+        </div>
+      </div>
+
+      <div class="topic-card fade-up" data-class="9">
+        <div class="topic-card-header">
+          <span class="topic-icon">🔬</span>
+          <div><div class="topic-title">Is Matter Around Us Pure?</div></div>
+          <span class="topic-class-badge">Class 9</span>
+        </div>
+        <div class="topic-body">
+          <p>This chapter distinguishes pure substances from mixtures:</p>
+          <ul>
+            <li><strong>Pure Substance:</strong> Elements (e.g., Gold, Iron) and Compounds (e.g., Water, Salt) — fixed composition.</li>
+            <li><strong>Solution:</strong> Homogeneous mixture. Solute particles are invisible (&lt;1nm). Does NOT scatter light.</li>
+            <li><strong>Suspension:</strong> Heterogeneous, particles settle on standing (&gt;100nm). E.g., chalk in water.</li>
+            <li><strong>Colloid:</strong> Heterogeneous, particles don't settle (1–100nm). Scatters light — <strong>Tyndall Effect</strong>.</li>
+          </ul>
+          <div class="topic-key-box">
+            <strong>Tyndall Effect</strong>
+            <p>The scattering of light by colloidal particles. Visible in: milk, smoke, fog, starch solution.</p>
+          </div>
+          <a href="simulator.html" class="sim-link-btn">▶ See Tyndall Effect</a>
+        </div>
+        <div class="topic-footer">
+          <span class="topic-tag">NCERT Ch.2</span>
+          <span class="topic-tag">Colloids</span>
+          <span class="topic-tag">Tyndall Effect</span>
+        </div>
+      </div>
+
+      <div class="topic-card fade-up" data-class="9">
+        <div class="topic-card-header">
+          <span class="topic-icon">💨</span>
+          <div><div class="topic-title">Diffusion</div></div>
+          <span class="topic-class-badge">Class 9</span>
+        </div>
+        <div class="topic-body">
+          <p><strong>Diffusion</strong> is the movement of particles from a region of high concentration to low concentration.</p>
+          <ul>
+            <li>Diffusion occurs in solids, liquids, and gases.</li>
+            <li><strong>Gases</strong> diffuse fastest (high kinetic energy, large intermolecular spaces).</li>
+            <li><strong>Solids</strong> diffuse slowest (tightly packed particles, low energy).</li>
+            <li>Diffusion rate increases with temperature.</li>
+            <li>Examples: Smell of perfume spreading, KMnO₄ in water, gas leaks.</li>
+          </ul>
+          <div class="topic-key-box">
+            <strong>Fick's Law (simplified)</strong>
+            <p>Rate of diffusion ∝ Concentration Gradient &amp; Temperature</p>
+          </div>
+          <a href="simulator.html" class="sim-link-btn">▶ See Diffusion Tab</a>
+        </div>
+        <div class="topic-footer">
+          <span class="topic-tag">NCERT Ch.1</span>
+          <span class="topic-tag">Diffusion</span>
+        </div>
+      </div>
+
+      <!-- CLASS 10 TOPICS -->
+      <div class="topic-card fade-up" data-class="10">
+        <div class="topic-card-header">
+          <span class="topic-icon">🧪</span>
+          <div><div class="topic-title">Chemical Reactions &amp; Equations</div></div>
+          <span class="topic-class-badge">Class 10</span>
+        </div>
+        <div class="topic-body">
+          <p>A <strong>chemical reaction</strong> is a process where reactants are converted to products with different properties.</p>
+          <ul>
+            <li><strong>Combination:</strong> A + B → AB (e.g., 2H₂ + O₂ → 2H₂O)</li>
+            <li><strong>Decomposition:</strong> AB → A + B (e.g., 2H₂O → 2H₂ + O₂)</li>
+            <li><strong>Displacement:</strong> A + BC → AC + B</li>
+            <li><strong>Double Displacement:</strong> AB + CD → AD + CB</li>
+            <li><strong>Redox:</strong> Simultaneous oxidation and reduction</li>
+          </ul>
+          <div class="topic-key-box">
+            <strong>Law of Conservation of Mass</strong>
+            <p>Mass of reactants = Mass of products. Atoms are neither created nor destroyed.</p>
+          </div>
+        </div>
+        <div class="topic-footer">
+          <span class="topic-tag">NCERT Ch.1</span>
+          <span class="topic-tag">Chemical Equations</span>
+        </div>
+      </div>
+
+      <div class="topic-card fade-up" data-class="10">
+        <div class="topic-card-header">
+          <span class="topic-icon">🔋</span>
+          <div><div class="topic-title">Acids, Bases &amp; Salts</div></div>
+          <span class="topic-class-badge">Class 10</span>
+        </div>
+        <div class="topic-body">
+          <p>Understanding acids, bases, and salts is fundamental to chemistry:</p>
+          <ul>
+            <li><strong>Acid:</strong> pH &lt; 7, tastes sour, turns blue litmus red. Examples: HCl, H₂SO₄, CH₃COOH</li>
+            <li><strong>Base:</strong> pH &gt; 7, tastes bitter, soapy feel, turns red litmus blue. Examples: NaOH, KOH, Ca(OH)₂</li>
+            <li><strong>Neutral:</strong> pH = 7 (water)</li>
+            <li><strong>Salt:</strong> Formed by acid + base neutralisation. Examples: NaCl, Na₂SO₄</li>
+          </ul>
+          <div class="topic-key-box">
+            <strong>pH Scale</strong>
+            <p>0 (very acidic) ← 7 (neutral) → 14 (very basic)</p>
+          </div>
+        </div>
+        <div class="topic-footer">
+          <span class="topic-tag">NCERT Ch.2</span>
+          <span class="topic-tag">pH Scale</span>
+          <span class="topic-tag">Acids Bases</span>
+        </div>
+      </div>
+
+      <div class="topic-card fade-up" data-class="10">
+        <div class="topic-card-header">
+          <span class="topic-icon">⚙️</span>
+          <div><div class="topic-title">Metals &amp; Non-metals</div></div>
+          <span class="topic-class-badge">Class 10</span>
+        </div>
+        <div class="topic-body">
+          <p>Physical and chemical properties distinguish metals from non-metals:</p>
+          <ul>
+            <li><strong>Metals:</strong> Lustrous, malleable, ductile, good conductors. E.g., Fe, Cu, Au, Al</li>
+            <li><strong>Non-metals:</strong> Brittle, non-lustrous, poor conductors. E.g., C, S, N, O</li>
+            <li><strong>Reactivity Series:</strong> K &gt; Na &gt; Ca &gt; Mg &gt; Al &gt; Zn &gt; Fe &gt; Cu &gt; Ag &gt; Au</li>
+            <li><strong>Corrosion:</strong> Slow destruction of metals by environmental reactions (rusting of Fe).</li>
+          </ul>
+          <div class="topic-key-box">
+            <strong>Ionic Bonding</strong>
+            <p>Metals lose electrons (form cations) + Non-metals gain electrons (form anions) → Ionic compound</p>
+          </div>
+        </div>
+        <div class="topic-footer">
+          <span class="topic-tag">NCERT Ch.3</span>
+          <span class="topic-tag">Reactivity Series</span>
+        </div>
+      </div>
+
+    </div><!-- /topics-grid -->
+
+    <!-- GLOSSARY -->
+    <div style="margin-top:3rem;">
+      <h2 class="section-title">📖 Key Terms Glossary</h2>
+      <p class="section-sub">Quick reference for important chemistry vocabulary.</p>
+      <div class="glossary-grid">
+        <div class="glossary-item"><div class="glossary-term">Sublimation</div><div class="glossary-def">Direct conversion of solid to gas without passing through liquid state. E.g., Camphor, Dry Ice.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Latent Heat</div><div class="glossary-def">Heat energy absorbed or released during a phase change at constant temperature.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Diffusion</div><div class="glossary-def">Spontaneous movement of particles from high concentration to low concentration region.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Tyndall Effect</div><div class="glossary-def">Scattering of a light beam by colloidal particles, making the path of light visible.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Colloid</div><div class="glossary-def">A mixture with particles (1–100nm) that don't settle but scatter light. E.g., milk, fog.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Suspension</div><div class="glossary-def">Heterogeneous mixture with particles &gt;100nm that settle on standing. E.g., chalk in water.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Brownian Motion</div><div class="glossary-def">Random zigzag movement of colloidal particles due to unequal bombardment by fluid molecules.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Boiling Point</div><div class="glossary-def">Temperature at which a liquid converts to gas (vapour pressure = atmospheric pressure).</div></div>
+        <div class="glossary-item"><div class="glossary-term">Melting Point</div><div class="glossary-def">Temperature at which a solid converts to liquid at standard pressure.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Kinetic Energy</div><div class="glossary-def">Energy of motion. Particles in gas state have highest KE; solids have lowest KE.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Solubility</div><div class="glossary-def">Maximum amount of solute that dissolves in a given solvent at a given temperature.</div></div>
+        <div class="glossary-item"><div class="glossary-term">Plasma</div><div class="glossary-def">The fourth state of matter — super-heated ionised gas. E.g., stars, lightning, neon signs.</div></div>
+      </div>
+    </div>
+  </main>
+
+  <footer style="text-align:center;padding:1.5rem;border-top:1px solid var(--border-subtle);font-size:0.78rem;color:var(--text-muted);">
+    MatterLab v4.0 &nbsp;|&nbsp; <a href="about.html" style="color:var(--accent-primary);text-decoration:none;">About &amp; Disclaimer</a>
+  </footer>
+
+  <script src="js/shared-nav.js"></script>
+  <script>
+    /* Class filter */
+    document.getElementById('class-filters').addEventListener('click', function(e) {
+      const btn = e.target.closest('.filter-chip');
+      if (!btn) return;
+      document.querySelectorAll('.filter-chip').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.topic-card').forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.class === filter) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
