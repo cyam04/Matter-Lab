@@ -58,22 +58,76 @@
   --tab-3: #4ade80;
 }
 
-/* ── Light Mode ── */
-body.light-mode {
+/* ── Light Mode ──
+   v4.6 FIX: CSS variables + direct overrides with !important
+   Dono approach use ki gayi taaki 100% work kare
+*/
+html.light-mode {
   --bg-base:       #eef2f7;
   --bg-surface:    #f8fafc;
   --bg-card:       #ffffff;
   --bg-card2:      #f1f5f9;
-  --bg-glass:      rgba(255, 255, 255, 0.80);
+  --bg-glass:      rgba(255, 255, 255, 0.88);
   --border-subtle: rgba(100, 116, 139, 0.20);
   --border-glow:   rgba(56, 189, 248, 0.40);
   --text-primary:  #0f172a;
   --text-secondary:#475569;
   --text-muted:    #94a3b8;
   --text-inverse:  #ffffff;
-  --shadow-sm:   0 2px 8px rgba(0,0,0,0.08);
-  --shadow-md:   0 6px 24px rgba(0,0,0,0.12);
+  --shadow-sm:     0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md:     0 6px 24px rgba(0,0,0,0.12);
 }
+
+/* Direct overrides — guaranteed to apply even if variable cascade fails */
+html.light-mode body,
+html.light-mode .page-body {
+  background: #eef2f7 !important;
+  color: #0f172a !important;
+}
+html.light-mode .global-navbar {
+  background: rgba(255,255,255,0.92) !important;
+  border-bottom-color: rgba(100,116,139,0.2) !important;
+}
+html.light-mode .nav-brand,
+html.light-mode .nav-links a,
+html.light-mode .section-title,
+html.light-mode .hfc-title,
+html.light-mode .topic-title,
+html.light-mode .exp-title,
+html.light-mode .dash-card-title {
+  color: #0f172a !important;
+}
+html.light-mode .nav-links a.active { color: #0ea5e9 !important; }
+html.light-mode .section-sub,
+html.light-mode .hfc-desc,
+html.light-mode .topic-body,
+html.light-mode .feature-desc,
+html.light-mode .step-text,
+html.light-mode .pt-label,
+html.light-mode .ai-text { color: #475569 !important; }
+html.light-mode .home-feature-card,
+html.light-mode .topic-card,
+html.light-mode .exp-card,
+html.light-mode .quiz-question-card,
+html.light-mode .quiz-option,
+html.light-mode .dash-card,
+html.light-mode .dash-stat-card,
+html.light-mode .about-card,
+html.light-mode .glossary-item {
+  background: #ffffff !important;
+  border-color: rgba(100,116,139,0.18) !important;
+}
+html.light-mode .topic-card-header,
+html.light-mode .exp-header { background: #f8fafc !important; }
+html.light-mode .exp-header:hover { background: #f1f5f9 !important; }
+html.light-mode .filter-chip { background: #ffffff !important; color: #64748b !important; }
+html.light-mode .filter-chip.active { background: #38bdf8 !important; color: #000 !important; }
+html.light-mode .hero-section,
+html.light-mode .home-hero { background: #eef2f7 !important; }
+html.light-mode .stats-bar { border-color: rgba(100,116,139,0.15) !important; }
+html.light-mode .activity-item { background: #f1f5f9 !important; }
+html.light-mode .quiz-option { background: #f8fafc !important; color: #475569 !important; }
+html.light-mode .mobile-menu { background: #ffffff !important; }
 
 /* ── Reset & Base ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
