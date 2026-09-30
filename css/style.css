@@ -7,16 +7,26 @@
 
 /* ── CSS Variables ── */
 :root {
-  /* Palette – Dark Mode (default) */
-  --bg-base:       #0b0f1a;
-  --bg-surface:    #111827;
-  --bg-card:       #1a2236;
-  --bg-card2:      #1e293b;
-  --bg-glass:      rgba(26, 34, 54, 0.70);
-  --border-subtle: rgba(99, 117, 160, 0.18);
-  --border-glow:   rgba(99, 179, 237, 0.35);
+  /* ═══════════════════════════════════════════
+     SOFT DARK THEME (v4.7 — 2026-09-30)
+     Changed from jet-black to soft dark purple-navy
+     for better readability at low screen brightness
+     bg-base: #0b0f1a → #1e1e2e
+     bg-card: #1a2236 → #2a2b3c
+     text-primary: #e2e8f0 → #ffffff
+     text-secondary: #94a3b8 → #cbd5e1
+  ═══════════════════════════════════════════ */
 
-  /* Brand */
+  /* Backgrounds — Soft Dark */
+  --bg-base:       #1e1e2e;   /* main page bg — soft dark purple-navy */
+  --bg-surface:    #252637;   /* slightly lighter surface */
+  --bg-card:       #2a2b3c;   /* card background */
+  --bg-card2:      #313244;   /* secondary card / hover bg */
+  --bg-glass:      rgba(42, 43, 60, 0.80); /* glassmorphism */
+  --border-subtle: rgba(160, 170, 200, 0.18); /* slightly brighter border */
+  --border-glow:   rgba(99, 179, 237, 0.40);
+
+  /* Brand / Accent — unchanged */
   --accent-primary:  #38bdf8;
   --accent-secondary:#a78bfa;
   --accent-hot:      #f97316;
@@ -26,11 +36,11 @@
   --accent-pink:     #f472b6;
   --accent-red:      #f87171;
 
-  /* Text */
-  --text-primary:  #e2e8f0;
-  --text-secondary:#94a3b8;
-  --text-muted:    #64748b;
-  --text-inverse:  #0b0f1a;
+  /* Text — High Contrast for low brightness screens */
+  --text-primary:  #ffffff;   /* pure white — max visibility */
+  --text-secondary:#cbd5e1;   /* soft white-blue — menus & subtitles */
+  --text-muted:    #94a3b8;   /* muted — less important info */
+  --text-inverse:  #1e1e2e;
 
   /* Fonts */
   --font-ui:    'Inter', sans-serif;
@@ -44,9 +54,9 @@
   --radius-xl: 24px;
 
   /* Shadows */
-  --shadow-sm:   0 2px 8px rgba(0,0,0,0.35);
-  --shadow-md:   0 6px 24px rgba(0,0,0,0.45);
-  --shadow-glow: 0 0 24px rgba(56,189,248,0.2);
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.30);
+  --shadow-md:   0 6px 24px rgba(0,0,0,0.40);
+  --shadow-glow: 0 0 24px rgba(56,189,248,0.20);
 
   /* Transitions */
   --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
